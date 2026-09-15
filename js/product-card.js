@@ -1,0 +1,73 @@
+/**
+ * isaya 官網 — 商品卡共用渲染（index / products / services 共用）
+ * 暴露：window.renderProductCard(p), window.fillProductGrid(el, list)
+ * 「加入購物車」行為：依 select 選的 option 加一筆，toast 提示。
+ */
+(function () {
+  var ISAYA = window.ISAYA;
+
+  function priceHTML(p) {
+    if (p.consult) return '<span class="tag-consult">洽詢價</span>';
+    if (!p.price) return '<span class="product-price">依規格</span>';
+    return '<span class="product-price"><span class="cur">NT$</span>' + p.price + '</span>';
+  }
+
+  function renderProductCard(p) {
+    var hasOpts = p.options && p.options.length > 1;
+    var imgHTML = p.img
+      ? '<img class="product-img" src="' + p.img + '" alt="' + p.name + '" loading="lazy">'
+      : '<div class="product-img-ph">' + (p.type === 'service' ? '☸' : '◎') + '</div>';
+
+    var optHTML = '';
+    if (hasOpts) {
+      optHTML = '<div class="product-optselect"><label>' +
+        (!p.price ? '規格' : '加購') + '</label><select data-prodid="' + p.id + '">' +
+        p.options.map(function (o) {
+          return '<option value="' + o.id + '">' + o.label +
+            (o.surcharge ? '（+' + o.surcharge + '）' : '') + '</option>';
+        }).join('') +
+        '</select></div>';
+    }
+
+    var note = p.price_note ? '<span class="product-note">' + p.price_note + '</span>' : '';
+    var stock = (typeof p.stock === 'string' && p.stock) ? '<div class="stock-line">' + p.stock + '</div>' : '';
+
+    return '<div class="product-card" data-id="' + p.id + '">' +
+      imgHTML +
+      '<div class="product-body">' +
+        '<div class="product-name">' + p.name + '</div>' +
+        '<div class="product-blurb">' + p.blurb + '</div>' +
+        stock +
+        '<div class="product-price-row">' + priceHTML(p) + ' ' + note + '</div>' +
+        optHTML +
+        '<div class="cart-row" style="margin-top:auto;padding-top:.6rem;">' +
+          '<a href="product.html?id=' + p.id + '" style="font-size:.8rem;color:var(--text-muted);display:block;margin-bottom:.6rem;">詳細說明</a>' +
+          '<button class="btn-add" data-add="' + p.id + '">加入購物車</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function bindGrid(el) {
+    el.querySelectorAll('[data-add]').forEach(function (btn) {
+      btn.onclick = function () {
+        var pid = btn.getAttribute('data-add');
+        var p = ISAYA.getProduct(pid);
+        if (!p) return;
+        var sel = btn.parentElement.parentElement.querySelector('select');
+        var optId = sel ? sel.value : (p.options && p.options[0] ? p.options[0].id : '');
+        ISAYACart.add(pid, optId, 1);
+        window.isayaToast('已加入購物車：' + p.name);
+      };
+    });
+  }
+
+  function fillProductGrid(el, list) {
+    if (!el) return;
+    el.innerHTML = list.map(renderProductCard).join('');
+    bindGrid(el);
+  }
+
+  window.renderProductCard = renderProductCard;
+  window.fillProductGrid = fillProductGrid;
+})();

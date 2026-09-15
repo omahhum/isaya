@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光圻靈的伊夏亞 isaya — 品牌官方網站</title>
+  <meta name="description" content="光圻靈 伊夏亞 isaya 官方網站：結緣品線上訂購、祈福服務、見證回饋、品牌故事。">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase SDK (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="top-nav"></nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 class="hero-title">光圻靈的伊夏亞</h1>
+  <p class="hero-sub">光麒麟 伊夏亞 isaya</p>
+  <p class="hero-tagline">
+    修福作業，把神聖帶進日常。<br>
+    結緣品、祈福服務、線上課程，這裡一站結緣。
+  </p>
+  <div class="hero-btns">
+    <a href="products.html" class="btn-gold solid">瀏覽結緣品</a>
+    <a href="services.html" class="btn-outline">祈福服務</a>
+  </div>
+</section>
+
+<!-- 精選結緣品 -->
+<section class="section">
+  <h2 class="section-title">精選結緣品</h2>
+  <p class="section-sub">大藏經光柵膜・懷愛法・辟邪護身，依緣取用</p>
+  <div class="product-grid" id="featuredGrid"></div>
+  <div class="section-center" style="margin-top:2rem;">
+    <a href="products.html" class="btn-gold">看全部結緣品</a>
+  </div>
+</section>
+
+<!-- 祈福服務 -->
+<section class="section section-dark">
+  <h2 class="section-title">祈福服務</h2>
+  <p class="section-sub">個人專法・點燈・香印代點・線上課程</p>
+  <div class="product-grid" id="serviceGrid"></div>
+  <div class="section-center" style="margin-top:2rem;">
+    <a href="services.html" class="btn-outline">所有服務</a>
+  </div>
+</section>
+
+<!-- 見證 CTA -->
+<div class="cta-banner">
+  <h2>感應分享・見證回饋</h2>
+  <p>用了之後生活的小變化，同修現身說法</p>
+  <a href="testimonials.html" class="btn-gold">看見見證回饋</a>
+</div>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/product-card.js"></script>
+<script src="js/top-menu.js"></script>
+<script src="js/auth-nav.js"></script>
+<script src="js/footer.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  fillProductGrid(document.getElementById('featuredGrid'), ISAYA.byType('product').slice(0, 4));
+  fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service').slice(0, 4));
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: .1 });
+  document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
+});
+</script>
+</body>
+</html>

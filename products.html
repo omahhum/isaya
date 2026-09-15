@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>結緣品 — 光圻靈的伊夏亞 isaya</title>
+  <meta name="description" content="isaya 結緣品總覽：財寶天王卡片、咕嚕咕咧佛母唐卡、流蘇傘蓋、鏡面聖曼陀羅、老料龍宮舍利等。">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<nav id="top-nav"></nav>
+
+<div class="page">
+  <section class="page-hero">
+    <h1>結緣品</h1>
+    <p>大藏經光柵膜・懷愛法・辟邪護身，依緣取用。加入購物車後於結帳頁以 Gmail 登入送單。</p>
+  </section>
+
+  <section class="section">
+    <div class="product-grid" id="productGrid"></div>
+    <div class="section-center" style="margin-top:2rem;">
+      <p class="summary-note">目前未整合線上金流。送單後依管理端通知，以銀行轉帳或蝦皮代付完成付款。</p>
+      <p style="color:var(--text-muted);font-size:.85rem;margin-top:1rem;">
+        更多現貨結緣品可至
+        <a href="https://shopee.tw/jewelry69" target="_blank" rel="noopener">蝦皮賣場</a> 洽詢。
+      </p>
+    </div>
+  </section>
+</div>
+
+<div class="cta-banner">
+  <h2>想了解佛咒晶片 vs 光柵膜？</h2>
+  <p>兩者的數量、能量放大原理與使用注意，一次講清楚</p>
+  <a href="buddha-chip.html" class="btn-gold">佛咒晶片 vs 光柵膜</a>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/product-card.js"></script>
+<script src="js/top-menu.js"></script>
+<script src="js/auth-nav.js"></script>
+<script src="js/footer.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  ISAYA_API.loadProducts().then(function (res) {
+    var list = ISAYA.byType('product');
+    fillProductGrid(document.getElementById('productGrid'), list);
+  });
+});
+</script>
+</body>
+</html>

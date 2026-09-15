@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>結帳 — 光圻靈的伊夏亞 isaya</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<nav id="top-nav"></nav>
+
+<div class="page">
+  <section class="page-hero">
+    <h1>結帳</h1>
+    <p>填寫收件資訊，複製訂單貼上給粉絲專頁私訊即可完成結緣。（線上金流與 Gmail 訂單查詢即將推出）</p>
+  </section>
+
+  <section class="section" style="max-width:900px;">
+    <div id="checkoutEmpty" class="auth-gate" style="display:none;">
+      購物車是空的，先
+      <a href="products.html" style="color:var(--gold);">逛逛結緣品</a>。
+    </div>
+
+    <div id="checkoutForm" class="form-card" style="display:none;">
+      <h3 style="font-size:1.2rem;margin:0 0 1.5rem;">收件資訊</h3>
+      <div class="form-group">
+        <label for="coName">姓名 *</label>
+        <input id="coName" class="form-control" type="text" placeholder="收件人姓名">
+      </div>
+      <div class="form-group">
+        <label for="coPhone">聯絡電話 *</label>
+        <input id="coPhone" class="form-control" type="text" placeholder="例：0912345678">
+      </div>
+      <div class="form-group">
+        <label for="coAddress">收件地址 *</label>
+        <textarea id="coAddress" class="form-control" placeholder="郵遞區號與完整地址"></textarea>
+      </div>
+      <div class="form-group">
+        <label>付款方式 *</label>
+        <div class="pay-radio">
+          <label><input type="radio" name="pay" value="bank" checked> 銀行轉帳</label>
+          <label><input type="radio" name="pay" value="shopee"> 蝦皮代付</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="coNote">備註（選填）</label>
+        <textarea id="coNote" class="form-control" placeholder="加購選項、特別說明等"></textarea>
+      </div>
+
+      <div class="summary-box" id="coSummary" style="margin:1.5rem 0;"></div>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+        <button id="coCopy" class="btn-gold solid" style="flex:1;min-width:200px;padding:.9rem;">複製訂單資訊</button>
+      </div>
+      <a id="coFb" class="btn-outline" style="display:block;width:100%;text-align:center;margin-top:.8rem;padding:.8rem;"
+         href="https://www.facebook.com/lightwishsoul/" target="_blank" rel="noopener">
+        複製後，到 FB 粉絲團私訊貼上訂單完成結緣 →
+      </a>
+      <p id="coCopied" style="color:#7fd4a0;text-align:center;font-size:.9rem;margin:1rem 0 0;display:none;">
+        已複製訂單資訊，請到 FB 粉絲團私訊，貼上內容即可完成結緣。</p>
+    </div>
+  </section>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/top-menu.js"></script>
+<script src="js/auth-nav.js"></script>
+<script src="js/footer.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  var empty = document.getElementById('checkoutEmpty');
+  var form = document.getElementById('checkoutForm');
+  var copied = document.getElementById('coCopied');
+
+  function renderSummary() {
+    var d = ISAYACart.detail();
+    var el = document.getElementById('coSummary');
+    if (!d.lines.length) { el.innerHTML = ''; return; }
+    var rows = d.lines.map(function (l) {
+      var t = l.consult ? '洽詢價' : ('NT$' + l.lineTotal);
+      var q = (l.qty > 1) ? ' x' + l.qty : '';
+      var opt = l.optLabel ? '（' + l.optLabel + '）' : '';
+      var flag = l.group_order ? '【成團後通知付款】' : '';
+      return '<div class="summary-row"><span>' + l.name + opt + q + flag + '</span><span>' + t + '</span></div>';
+    }).join('');
+    var freeHint = d.goods >= ISAYA.SHIPPING.freeThreshold ? '免運' : (d.goods > 0 ? 'NT$' + ISAYA.SHIPPING.base : '');
+    el.innerHTML =
+      rows +
+      '<div class="summary-row" style="border-top:1px solid var(--line);margin-top:.4rem;padding-top:.6rem;"><span>商品小計</span><span>NT$' + d.goods + '</span></div>' +
+      '<div class="summary-row"><span>運費（滿 ' + ISAYA.SHIPPING.freeThreshold + ' 免運）</span><span>' + freeHint + '</span></div>' +
+      '<div class="summary-row total"><span>合計</span><span>NT$' + d.total + '</span></div>';
+  }
+
+  function refresh() {
+    var hasItems = ISAYACart.detail().lines.length > 0;
+    empty.style.display = hasItems ? 'none' : 'block';
+    form.style.display = hasItems ? 'block' : 'none';
+    if (hasItems) renderSummary();
+  }
+  refresh();
+  window.__onCartChanged = function () { renderSummary(); };
+
+  document.getElementById('coCopy').onclick = function () {
+    var d = ISAYACart.detail();
+    var name = document.getElementById('coName').value.trim();
+    var phone = document.getElementById('coPhone').value.trim();
+    var address = document.getElementById('coAddress').value.trim();
+    var payEl = document.querySelector('input[name="pay"]:checked');
+    var pay = payEl ? payEl.value : 'bank';
+    var payText = pay === 'shopee' ? '蝦皮代付' : '銀行轉帳';
+    var note = document.getElementById('coNote').value.trim();
+
+    if (!name || !phone || !address) {
+      isayaToast('請先填寫姓名、電話與地址');
+      return;
+    }
+
+    var lines = d.lines.map(function (l) {
+      var t = l.consult ? '洽詢價' : ('NT$' + l.lineTotal);
+      var q = (l.qty > 1) ? ' x' + l.qty : '';
+      var opt = l.optLabel ? '（' + l.optLabel + '）' : '';
+      var flag = l.group_order ? '【成團後通知付款】' : '';
+      return '- ' + l.name + opt + q + flag + ' ' + t;
+    });
+    var freeHint = d.goods >= ISAYA.SHIPPING.freeThreshold ? '免運' : (d.goods > 0 ? 'NT$' + ISAYA.SHIPPING.base : 'NT$0');
+    var text =
+      '【isaya 訂單】\n' +
+      lines.join('\n') + '\n' +
+      '--------------------------------\n' +
+      '商品小計：NT$' + d.goods + '\n' +
+      '運費（滿' + ISAYA.SHIPPING.freeThreshold + '免運）：' + freeHint + '\n' +
+      '合計：NT$' + d.total + '\n' +
+      '--------------------------------\n' +
+      '姓名：' + name + '\n' +
+      '電話：' + phone + '\n' +
+      '地址：' + address + '\n' +
+      '付款方式：' + payText +
+      (note ? '\n備註：' + note : '');
+
+    function done() {
+      copied.style.display = 'block';
+      isayaToast('已複製訂單資訊');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {
+        fallbackCopy(text); done();
+      });
+    } else {
+      fallbackCopy(text); done();
+    }
+  };
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+});
+</script>
+</body>
+</html>

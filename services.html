@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>祈福服務 — 光圻靈的伊夏亞 isaya</title>
+  <meta name="description" content="isaya 祈福服務：個人專法（包月）、點燈祈福、大悲拔苦香印代點、阿卡西記錄解讀等線上課程。">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<nav id="top-nav"></nav>
+
+<div class="page">
+  <section class="page-hero">
+    <h1>祈福服務</h1>
+    <p>個法、點燈、香印代點與線上課程。標示「洽詢價」者，送單後由管理端回覆價格與檔期。</p>
+  </section>
+
+  <section class="section">
+    <div class="product-grid" id="serviceGrid"></div>
+
+    <div class="section-center" style="margin-top:2rem;">
+      <div class="form-card" style="text-align:left;">
+        <h3 style="font-size:1.1rem;margin-bottom:1rem;">服務價目提示</h3>
+        <p style="color:var(--text-muted);font-size:.9rem;line-height:1.9;">
+          有需要占卜或是個案處理都可以詢問。線上塔羅占卜是由香海老師教導的正式塔羅師幫忙服務，也有香海老師親自占卜以及個案處理，以及各式塔羅、靜心課程，歡迎詢問。<br>
+          服務皆於購物車加入後，於結帳頁 Gmail 登入送單；「洽詢價」項目送單後由管理端回覆。
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="cta-banner">
+  <h2>阿卡西記錄解讀</h2>
+  <p>隸屬阿賴耶識之下，比一般解讀更直擊人心</p>
+  <a href="product.html?id=akashic-record" class="btn-gold">看課程說明</a>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script src="js/product-card.js"></script>
+<script src="js/top-menu.js"></script>
+<script src="js/auth-nav.js"></script>
+<script src="js/footer.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service'));
+});
+</script>
+</body>
+</html>
