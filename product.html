@@ -14,7 +14,8 @@
 
 <div class="page">
   <div class="section" style="padding-top:2rem;">
-    <div id="detailWrap" class="detail-wrap">
+    <div class="page-loader" id="pageLoader"><div class="loader-ring"></div>載入中…</div>
+    <div id="detailWrap" class="detail-wrap" style="display:none;">
       <!-- JS 依 ?id= 填入 -->
       <div class="detail-side">
         <div id="detailImg"></div>
@@ -42,6 +43,8 @@
       </div>
     </div>
 
+    <div id="fullStory" class="detail-story" style="display:none;"></div>
+
     <div class="section-center" style="margin-top:3rem;">
       <a href="products.html" class="btn-outline">← 回結緣品總覽</a>
     </div>
@@ -54,6 +57,7 @@
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/api.js"></script>
+<script src="js/products-full.js"></script>
 <script src="js/top-menu.js"></script>
 <script src="js/auth-nav.js"></script>
 <script src="js/footer.js"></script>
@@ -65,11 +69,44 @@ document.addEventListener('DOMContentLoaded', () => {
   var params = new URLSearchParams(location.search);
   var id = params.get('id');
   var p = ISAYA.getProduct(id);
+  var loader = document.getElementById('pageLoader');
 
   if (!p) {
+    document.getElementById('detailWrap').style.display = '';
     document.getElementById('detailWrap').innerHTML =
       '<div class="cart-empty">找不到此品項。<br><br><a href="products.html" class="btn-gold" style="padding:.6rem 2rem;">回結緣品總覽</a></div>';
+    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
     return;
+  }
+
+  // 載入完成：隱藏動畫、顯示主體
+  if (loader) {
+    loader.classList.add('done');
+    setTimeout(function () { loader.style.display = 'none'; }, 400);
+  }
+  document.getElementById('detailWrap').style.display = '';
+
+  // 一頁式圖文長文（簡介之下、回總覽之上）
+  var storyEl = document.getElementById('fullStory');
+  var full = (window.ISAYA_FULL && window.ISAYA_FULL[p.id]) || [];
+  if (full.length) {
+    storyEl.innerHTML =
+      '<h2>圖文長文</h2>' +
+      full.map(function (b) {
+        var h = '';
+        if (b.img) h = '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" alt="' + p.name + '" loading="lazy"></div>';
+        var ps = (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('');
+        return '<div class="story-block">' + h + ps + '</div>';
+      }).join('');
+    // 長文內圖缺失 → 自動換占位符
+    storyEl.querySelectorAll('img.story-img').forEach(function (im) {
+      im.onerror = function () {
+        var ph = document.createElement('div');
+        ph.className = 'story-img-ph'; ph.textContent = (p.type === 'service' ? '☸' : '◎');
+        im.replaceWith(ph);
+      };
+    });
+    storyEl.style.display = '';
   }
 
   // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：檔案缺失 → 舊圖 → 占位符）

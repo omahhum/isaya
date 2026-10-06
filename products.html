@@ -20,7 +20,8 @@
   </section>
 
   <section class="section">
-    <div class="product-grid" id="productGrid"></div>
+    <div class="page-loader" id="pageLoader"><div class="loader-ring"></div>載入中…</div>
+    <div class="product-grid" id="productGrid" style="display:none;"></div>
     <div class="section-center" style="margin-top:2rem;">
       <p class="summary-note">目前未整合線上金流。送單後依管理端通知，以銀行轉帳或蝦皮代付完成付款。</p>
       <p style="color:var(--text-muted);font-size:.85rem;margin-top:1rem;">
@@ -52,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
   ISAYA_API.loadProducts().then(function (res) {
     var list = ISAYA.byType('product');
     fillProductGrid(document.getElementById('productGrid'), list);
+    var loader = document.getElementById('pageLoader');
+    var grid = document.getElementById('productGrid');
+    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
+    if (grid) grid.style.display = '';
   });
 });
 </script>

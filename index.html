@@ -31,9 +31,10 @@
 
 <!-- 精選結緣品 -->
 <section class="section">
+  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div>載入中…</div>
   <h2 class="section-title">精選結緣品</h2>
   <p class="section-sub">大藏經光柵膜・懷愛法・辟邪護身，依緣取用</p>
-  <div class="product-grid" id="featuredGrid"></div>
+  <div class="product-grid" id="featuredGrid" style="display:none;"></div>
   <div class="section-center" style="margin-top:2rem;">
     <a href="products.html" class="btn-gold">看全部結緣品</a>
   </div>
@@ -43,7 +44,7 @@
 <section class="section section-dark">
   <h2 class="section-title">祈福服務</h2>
   <p class="section-sub">個人專法・點燈・香印代點・線上課程</p>
-  <div class="product-grid" id="serviceGrid"></div>
+  <div class="product-grid" id="serviceGrid" style="display:none;"></div>
   <div class="section-center" style="margin-top:2rem;">
     <a href="services.html" class="btn-outline">所有服務</a>
   </div>
@@ -72,6 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
   ISAYA_API.loadProducts().then(function () {
     fillProductGrid(document.getElementById('featuredGrid'), ISAYA.byType('product').slice(0, 4));
     fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service').slice(0, 4));
+    var loader = document.getElementById('pageLoader');
+    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
+    document.getElementById('featuredGrid').style.display = '';
+    document.getElementById('serviceGrid').style.display = '';
   });
 
   var observer = new IntersectionObserver(function (entries) {

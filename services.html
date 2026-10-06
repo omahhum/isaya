@@ -20,7 +20,8 @@
   </section>
 
   <section class="section">
-    <div class="product-grid" id="serviceGrid"></div>
+    <div class="page-loader" id="pageLoader"><div class="loader-ring"></div>載入中…</div>
+    <div class="product-grid" id="serviceGrid" style="display:none;"></div>
 
     <div class="section-center" style="margin-top:2rem;">
       <div class="form-card" style="text-align:left;">
@@ -54,6 +55,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   ISAYA_API.loadProducts().then(function () {
     fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service'));
+    var loader = document.getElementById('pageLoader');
+    var grid = document.getElementById('serviceGrid');
+    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
+    if (grid) grid.style.display = '';
   });
 });
 </script>

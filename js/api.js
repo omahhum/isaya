@@ -78,20 +78,28 @@
     // 載入並合併後端商品；失敗 → 保留本機。回傳 {source:'remote'|'local', products}
     loadProducts: function () {
       if (loaded) return loaded;
+      var settled = false;
+      function resolveLocal() {
+        if (settled) return; settled = true;
+        resolve({ source: 'local', products: window.ISAYA.PRODUCTS });
+      }
       loaded = new Promise(function (resolve) {
+        var timer = setTimeout(resolveLocal, 5000); // GAS 太慢 → 先用本機顯示，載入動畫不卡死
         fetch(APPS_SCRIPT_URL + '?action=getProducts')
           .then(function (r) { return r.text(); })
           .then(function (text) {
+            clearTimeout(timer);
             var data = null;
             try { data = JSON.parse(text); } catch (e) {}
             if (data && Array.isArray(data.products) && data.products.length) {
               mergeIntoLocal(data.products);
+              settled = true;
               resolve({ source: 'remote', products: window.ISAYA.PRODUCTS });
             } else {
-              resolve({ source: 'local', products: window.ISAYA.PRODUCTS });
+              resolveLocal();
             }
           })
-          .catch(function () { resolve({ source: 'local', products: window.ISAYA.PRODUCTS }); });
+          .catch(function () { clearTimeout(timer); resolveLocal(); });
       });
       return loaded;
     },
