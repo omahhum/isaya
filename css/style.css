@@ -324,6 +324,40 @@ img { max-width: 100%; }
   color: rgba(212,175,55,.4); font-size: 4rem;
   border: 1px solid var(--line);
 }
+/* 圖廊：縮圖列（主圖下方） */
+.detail-thumbs {
+  display: flex; gap: .4rem; margin-top: .6rem;
+  overflow-x: auto; padding-bottom: .3rem;
+  scrollbar-width: thin;
+}
+.detail-thumbs .thumb {
+  width: 64px; height: 64px; flex: 0 0 auto;
+  object-fit: cover; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 4px;
+  opacity: .55; transition: all .18s ease;
+  background: #080e1a;
+}
+.detail-thumbs .thumb:hover { opacity: .9; }
+.detail-thumbs .thumb.active {
+  opacity: 1; border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212,175,55,.4);
+}
+.detail-img { min-height: 380px; }
+/* 導語段落（標題下、價格上） */
+.detail-blurb {
+  font-size: 1rem; line-height: 1.9; color: var(--text-muted);
+  margin: .4rem 0 1rem; font-weight: 400;
+}
+/* 段落式整頁介紹（取代條列清單） */
+.detail-intro { margin: 1rem 0 1.5rem; }
+.detail-intro .detail-para {
+  color: var(--text-muted); font-size: .92rem; line-height: 2.0;
+  margin: 0 0 1rem; position: relative; padding-left: 1.4rem;
+}
+.detail-intro .detail-para::before {
+  content: '◆'; color: var(--gold); position: absolute; left: 0; font-size: .65rem; top: .5em;
+}
+.detail-intro .detail-para:empty { display: none; }
 .detail-name { font-size: 1.8rem; margin-bottom: .5rem; }
 .detail-list { list-style: none; padding: 0; margin: 1.5rem 0; }
 .detail-list li {

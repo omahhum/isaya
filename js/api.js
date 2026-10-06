@@ -28,11 +28,13 @@
                options: [{ id: 'base', label: '標準', surcharge: 0 }] };
         local.push(ex);
       }
+      // 價格／庫存／選項以試算表為準（改價、改庫存不用改網站）；
+      // 行銷文案 blurb / detail / imgs 以官網為準（試算表只有一行，不能蓋掉整頁介紹）。
       ['name', 'type', 'price', 'consult', 'group_order', 'multi_qty',
-       'price_note', 'options', 'stock', 'on_sale', 'blurb', 'detail'].forEach(function (k) {
+       'price_note', 'options', 'stock', 'on_sale'].forEach(function (k) {
         if (rp[k] !== undefined && rp[k] !== '') ex[k] = rp[k];
       });
-      if (rp.img) ex.img = rp.img;      // 後端 img 優先（相對路徑，見圖片規則）
+      if (rp.img) ex.img = rp.img;      // 主圖可試算表指定；圖廊/文案仍為本機
       ex.imgFb = localImg[ex.id] || '';  // 本機舊圖 fallback
     });
   }

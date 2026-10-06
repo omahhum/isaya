@@ -46,6 +46,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: true, on_sale: true,
     img: "images/products/caibao-card.jpg",
+    imgs: ["images/products/caibao-card.jpg"],
     blurb: '全球獨一無二的財寶天王字曼陀羅開運招財朱印，当日修法祈請降臨加持，蓋上甘露王菩薩及聖曼陀羅朱印。',
     detail: [
       '與大家結緣無比殊勝、全球獨一無二的財寶天王字曼陀羅開運招財朱印。',
@@ -70,6 +71,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: true, on_sale: true,
     img: "images/products/gulugue-thangka.jpg",
+    imgs: ["images/products/gulugue-thangka.jpg","images/products/gulugue-thangka_01.png","images/products/gulugue-thangka_03.jpg","images/products/gulugue-thangka_04.jpg","images/products/gulugue-thangka_05.jpg"],
     blurb: '作明佛母（咕嚕咕咧佛母），懷愛法中最強大的兩大本尊之一。正面亮銀面閃卡材質，聖輪宗特別繪製。',
     detail: [
       '作明佛母，藏傳佛教又稱為咕嚕咕咧佛母，漢地佛經記載的名稱是酤羅菩薩，是懷愛法中最強大的兩大本尊之一（另一為愛染明王）。',
@@ -95,6 +97,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: '現貨依備品，不足時排隊趕製', on_sale: true,
     img: "images/products/umbrella.jpg",
+    imgs: ["images/products/umbrella.jpg","images/products/umbrella_02.png","images/products/umbrella_03.png","images/products/umbrella_04.jpg"],
     blurb: '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」，考慮良久並親身實驗近一年後才決定的強效辟邪護身方便法門。',
     detail: [
       '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」是我們考慮良久、並親身實驗將近一年之後，才決定跟同修們分享的超級法寶。',
@@ -122,6 +125,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: '尚有庫存（限量）', on_sale: true,
     img: "images/products/mirror-mandala.jpg",
+    imgs: ["images/products/mirror-mandala.jpg","images/products/mirror-mandala_02.jpg","images/products/mirror-mandala_03.jpg","images/products/mirror-mandala_04.jpg","images/products/mirror-mandala_05.jpg","images/products/mirror-mandala_06.jpg","images/products/mirror-mandala_07.jpg","images/products/mirror-mandala_08.jpg","images/products/mirror-mandala_09.png","images/products/mirror-mandala_10.png","images/products/mirror-mandala_11.png","images/products/mirror-mandala_12.jpg","images/products/mirror-mandala_13.jpg","images/products/mirror-mandala_14.jpg","images/products/mirror-mandala_15.jpg","images/products/mirror-mandala_16.jpg"],
     blurb: '順心自在、隨求滿願的神聖曼陀羅。全鋁合金雷雕上色，表層 1mm 透明保護墊，防鏽防蝕、耐曬耐熱。',
     detail: [
       '順心自在、隨求滿願的神聖曼陀羅。',
@@ -150,6 +154,17 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: '每件為斷代珍藏，售出即止', on_sale: true,
     img: "images/products/relic.jpg",
+    imgs: ["images/products/relic.jpg","images/products/relic-no1.jpg","images/products/relic-no2.jpg","images/products/relic-no3.jpg","images/products/relic-no4.jpg","images/products/relic-no5.jpg","images/products/relic-no6.jpg","images/products/relic-no7.jpg"],
+    // 選到某編號時，主圖與圖廊切換到該顆舍利（圖＋細節圖）
+    optionImgs: {
+      no1: ["images/products/relic-no1.jpg","images/products/relic-no1-detail.jpg"],
+      no2: ["images/products/relic-no2.jpg","images/products/relic-no2-detail.jpg"],
+      no3: ["images/products/relic-no3.jpg","images/products/relic-no3-detail.jpg"],
+      no4: ["images/products/relic-no4.jpg","images/products/relic-no4-detail.jpg"],
+      no5: ["images/products/relic-no5.jpg","images/products/relic-no5-detail.jpg"],
+      no6: ["images/products/relic-no6.jpg","images/products/relic-no6-detail.jpg"],
+      no7: ["images/products/relic-no7.jpg","images/products/relic-no7-detail.jpg"]
+    },
     blurb: '收藏超過二十年、完全沒有配戴過的珍品龍宮舍利，僅收藏保養，為共修中心壇城改建而釋出。',
     detail: [
       '這些超過二十年的珍品，完全沒有配戴過，僅只於收藏、保養，看上去都很漂亮，時間沒有在上面留下任何痕跡。',
@@ -211,6 +226,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: true, on_sale: true,
     img: "images/services/candle-light.jpg",
+    imgs: ["images/services/candle-light.jpg"],
     blurb: '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈功德迴向給你所想祈求的事項。',
     detail: [
       '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈的功德迴向給你所想祈求的事項。',
@@ -229,6 +245,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: '每日同時僅 5 個名額', on_sale: true,
     img: "images/services/incense-seal.jpg",
+    imgs: ["images/services/incense-seal.jpg","images/services/incense-seal_01.jpg","images/services/incense-seal_02.jpg"],
     blurb: '觀自在菩薩大悲智印周遍法界利益眾生薰真如法（又名觀自在妙香印法），一盤大悲拔苦熏香。',
     detail: [
       '大悲拔苦熏香代點服務，一盤結緣價 350 元，每日同時只開放 5 個名額（香爐暫時只有 5 座）。',
@@ -247,6 +264,7 @@ window.ISAYA.PRODUCTS = [
     ],
     stock: '不限名額', on_sale: true,
     img: "images/services/personal-practice.jpg",
+    imgs: ["images/services/personal-practice.jpg","images/services/personal-practice_01.jpg","images/services/personal-practice_02.jpg","images/services/personal-practice_03.jpg","images/services/personal-practice_04.jpg","images/services/personal-practice_05.png","images/services/personal-practice_06.jpg","images/services/personal-practice_07.jpg","images/services/personal-practice_08.png","images/services/personal-practice_09.jpg","images/services/personal-practice_10.jpg","images/services/personal-practice_11.jpg","images/services/personal-practice_12.png","images/services/personal-practice_13.jpg","images/services/personal-practice_14.png","images/services/personal-practice_15.jpg","images/services/personal-practice_16.jpg","images/services/personal-practice_17.jpg","images/services/personal-practice_18.jpg","images/services/personal-practice_19.jpg","images/services/personal-practice_20.jpg","images/services/personal-practice_21.jpg","images/services/personal-practice_22.jpg","images/services/personal-practice_23.jpg","images/services/personal-practice_24.png"],
     blurb: '當月份報名者集體擺供、個人單獨祈福卡，每月不同主尊、殊勝日修不同法。',
     detail: [
       '2026.04 起「個人專法」更改為法會 [包月] 贊助功德主，不限名額，並開放更多小額、隨喜的法會參贊項目，供更多想要祈福加持的同修依個人情況選擇報名。',

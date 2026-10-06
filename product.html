@@ -23,6 +23,7 @@
         <h1 class="detail-name" id="detailName"></h1>
         <div id="detailPriceRow" class="product-price-row"></div>
         <div id="detailStock" class="stock-line"></div>
+        <p class="detail-blurb" id="detailBlurb"></p>
 
         <div class="detail-options" id="detailOptions" style="display:none;">
           <label>選擇規格／加購</label>
@@ -37,7 +38,7 @@
         <button class="btn-gold solid" id="detailAdd" style="margin:1rem 0;width:auto;">加入購物車</button>
         <div id="detailNote" style="color:var(--text-muted);font-size:.82rem;margin-top:.8rem;"></div>
 
-        <ul class="detail-list" id="detailList"></ul>
+        <div class="detail-list" id="detailList"></div>
       </div>
     </div>
 
@@ -71,20 +72,60 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // 圖片：img + 占位成對，走 api.js 候選回退（檔案缺失 → 舊圖 → 占位符）
+  // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：檔案缺失 → 舊圖 → 占位符）
   var imgWrap = document.getElementById('detailImg');
   imgWrap.innerHTML =
     '<img class="detail-img" id="detailImgEl" src="" alt="' + p.name + '">' +
-    '<div class="detail-img-ph" id="detailImgPh" style="display:none;">' + (p.type === 'service' ? '☸' : '◎') + '</div>';
+    '<div class="detail-img-ph" id="detailImgPh" style="display:none;">' + (p.type === 'service' ? '☸' : '◎') + '</div>' +
+    '<div class="detail-thumbs" id="detailThumbs"></div>';
 
+  // 圖廊清單：舍利依編號切換 optionImgs；其餘用 imgs（主圖第一張）
+  function galleryFor(opt) {
+    if (p.optionImgs && p.optionImgs[opt]) return p.optionImgs[opt];
+    if (p.imgs && p.imgs.length) return p.imgs;
+    if (p.img) return [p.img];
+    return [];
+  }
+  function setMain(src) {
+    var imgEl = document.getElementById('detailImgEl');
+    var phEl = document.getElementById('detailImgPh');
+    imgEl.onerror = null;
+    if (!src) { imgEl.style.display = 'none'; imgEl.removeAttribute('src'); phEl.style.display = ''; return; }
+    phEl.style.display = 'none';
+    imgEl.style.display = '';
+    imgEl.onerror = function () { /* 單一候選失敗即交還 bindPair */ rebindImg(); };
+    imgEl.src = src;
+  }
   function rebindImg() {
+    // 依目前主圖候選（api.js：舍利編號圖 → 品項 img → 本機舊圖 → 占位符）
     var imgEl = document.getElementById('detailImgEl');
     var phEl = document.getElementById('detailImgPh');
     if (window.ISAYA_API && ISAYA_API.bindPair) ISAYA_API.bindPair(imgEl, phEl, p, curOpt());
+    // 縮圖圖廊
+    var thumbs = document.getElementById('detailThumbs');
+    var list = galleryFor(curOpt());
+    var mainSrc = imgEl.getAttribute('src') || '';
+    if (list.length > 1) {
+      thumbs.style.display = '';
+      thumbs.innerHTML = list.map(function (src) {
+        return '<img class="thumb' + (src === mainSrc ? ' active' : '') + '" src="' + src + '" data-src="' + src + '" alt="">';
+      }).join('');
+    } else {
+      thumbs.style.display = 'none'; thumbs.innerHTML = '';
+    }
   }
+  document.getElementById('detailThumbs').addEventListener('click', function (e) {
+    var t = e.target.closest('.thumb');
+    if (!t) return;
+    document.querySelectorAll('#detailThumbs .thumb').forEach(function (x) { x.classList.remove('active'); });
+    t.classList.add('active');
+    setMain(t.dataset.src);
+  });
 
   document.title = p.name + ' — 光圻靈的伊夏亞 isaya';
   document.getElementById('detailName').textContent = p.name;
+  var blurbEl = document.getElementById('detailBlurb');
+  if (blurbEl) blurbEl.textContent = p.blurb || '';
 
   // 價格
   var priceRow = document.getElementById('detailPriceRow');
@@ -146,9 +187,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (qtyEl) qtyEl.oninput = updateTotal;
   updateTotal();
 
-  // 明細清單
-  document.getElementById('detailList').innerHTML =
-    (p.detail || []).map(function (d) { return '<li>' + d + '</li>'; }).join('');
+  // 介紹：段落式整頁行銷文（detail 每項獨立一段）
+  var listEl = document.getElementById('detailList');
+  listEl.className = 'detail-intro';
+  listEl.innerHTML = (p.detail || []).map(function (d) {
+    if (!d) return '';
+    return '<p class="detail-para">' + d + '</p>';
+  }).join('');
+  if (!(p.detail || []).length) listEl.style.display = 'none';
 
   // 加入購物車
   document.getElementById('detailAdd').onclick = function () {
