@@ -35,6 +35,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   var body = document.getElementById('cartBody');
+  ISAYA_API.loadProducts().then(function () { render(); });
 
   function render() {
     var d = ISAYACart.detail();

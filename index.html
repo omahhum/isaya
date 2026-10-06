@@ -69,8 +69,10 @@
 <script src="js/footer.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  fillProductGrid(document.getElementById('featuredGrid'), ISAYA.byType('product').slice(0, 4));
-  fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service').slice(0, 4));
+  ISAYA_API.loadProducts().then(function () {
+    fillProductGrid(document.getElementById('featuredGrid'), ISAYA.byType('product').slice(0, 4));
+    fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service').slice(0, 4));
+  });
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });

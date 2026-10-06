@@ -15,20 +15,28 @@
 <div class="page">
   <section class="page-hero">
     <h1>我的訂單</h1>
-    <p>Gmail 登入查訂單即將啟用。</p>
+    <p>Gmail 登入後，可查閱名下所有訂單與出貨進度。</p>
   </section>
 
   <section class="section" style="max-width:760px;">
-    <div class="member-banner">
-      <div class="greet">線上訂單查詢即將啟用</div>
-      <p style="color:var(--text-muted);line-height:2;margin:1rem 0;">
-        目前訂單以粉絲專頁私訊送出，管理端確認後會私訊通知付款與出貨進度。<br>
-        線上「Gmail 登入＋訂單查詢」功能完成後，即可在此頁查閱名下訂單。
-      </p>
-      <div class="hero-btns" style="justify-content:flex-start;margin-top:1.5rem;">
-        <a href="https://www.facebook.com/lightwishsoul/" target="_blank" rel="noopener" class="btn-gold" style="padding:.6rem 2rem;font-size:.9rem;">FB 粉絲團</a>
-        <a href="products.html" class="btn-outline" style="padding:.6rem 2rem;font-size:.9rem;">回結緣品</a>
-      </div>
+    <!-- 未登入 -->
+    <div id="ordersAuth" class="auth-gate" style="display:none;">
+      <p>請先用 Gmail 登入，即可查詢名下訂單</p>
+      <button class="btn-gold solid" style="padding:.8rem 2.4rem;" onclick="firebaseAuth.signInWithGoogle()">
+        Gmail 登入
+      </button>
+    </div>
+
+    <!-- 載入中 -->
+    <div id="ordersLoading" class="auth-gate" style="display:none;">載入訂單中…</div>
+
+    <!-- 訂單清單 -->
+    <div id="ordersList" style="display:none;"></div>
+
+    <!-- 無訂單 -->
+    <div id="ordersEmpty" class="auth-gate" style="display:none;">
+      目前尚無訂單紀錄。
+      <a href="products.html" style="color:var(--gold);">先去逛逛結緣品</a>。
     </div>
   </section>
 </div>
@@ -42,5 +50,71 @@
 <script src="js/top-menu.js"></script>
 <script src="js/auth-nav.js"></script>
 <script src="js/footer.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  var authGate = document.getElementById('ordersAuth');
+  var loading = document.getElementById('ordersLoading');
+  var list = document.getElementById('ordersList');
+  var empty = document.getElementById('ordersEmpty');
+
+  function statusBadge(st) {
+    var map = { '待付款': '#d4af37', '已付款': '#7fd4a0', '已出貨': '#8fb4ff', '已完成': '#7fd4a0' };
+    var color = map[st] || '#9aa4b8';
+    return '<span style="display:inline-block;padding:.15rem .7rem;border-radius:999px;' +
+      'border:1px solid ' + color + ';color:' + color + ';font-size:.75rem;">' + (st || '待付款') + '</span>';
+  }
+
+  function orderCard(o) {
+    var lines = (o.items || []).map(function (l) {
+      var t = l.consult ? '洽詢價' : ('NT$' + (l.lineTotal || 0));
+      var q = (l.qty > 1) ? ' x' + l.qty : '';
+      var opt = l.optLabel ? '（' + l.optLabel + '）' : '';
+      return '<div class="summary-row"><span>' + (l.name || '') + opt + q + '</span><span>' + t + '</span></div>';
+    }).join('');
+    return '<div class="form-card" style="margin-bottom:1.2rem;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">' +
+        '<strong style="color:var(--gold-soft);font-size:1rem;">' + o.order_no + '</strong>' +
+        statusBadge(o.status) +
+      '</div>' +
+      '<div style="color:var(--text-muted);font-size:.78rem;margin:.4rem 0 .8rem;">' + (o.created_at || '') + '</div>' +
+      '<div class="summary-box" style="margin:0;">' + lines +
+        '<div class="summary-row total" style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--line);">' +
+          '<span>合計</span><span>NT$' + (o.total || 0) + '</span></div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  async function refresh() {
+    var user = firebaseAuth.getCurrentUser();
+    if (!user) {
+      authGate.style.display = 'block';
+      list.style.display = 'none';
+      empty.style.display = 'none';
+      return;
+    }
+    authGate.style.display = 'none';
+    loading.style.display = 'block';
+    list.style.display = 'none';
+    empty.style.display = 'none';
+    try {
+      var orders = await firebaseAuth.listOrders();
+      loading.style.display = 'none';
+      if (!orders.length) {
+        empty.style.display = 'block';
+      } else {
+        list.style.display = 'block';
+        list.innerHTML = orders.map(orderCard).join('');
+      }
+    } catch (e) {
+      loading.style.display = 'none';
+      empty.style.display = 'block';
+      empty.innerHTML = '訂單載入失敗，請稍後再試。';
+    }
+  }
+
+  firebaseAuth.onAuthStateChanged(refresh);
+  refresh();
+});
+</script>
 </body>
 </html>

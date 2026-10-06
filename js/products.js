@@ -45,7 +45,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'holofilm', label: '加貼大藏經光柵膜（=960元）', surcharge: 600 }
     ],
     stock: true, on_sale: true,
-    img: 'https://lh3.googleusercontent.com/sitesv/AG8ngQVsfv4DMuewIzE-Fj4DuhAjQ_dvGiqnFgOXHWaj2ZLCT-dSx9UZq3J8ctqSunDJE1uhCTdx38bFzk1WhhArnT7K9K9IASC5tj_3HGsFmkUxHE2VYUQVnHQrx6JPS0PLgnQY3LfIQWuVx9SuU-UIaKeIblUOGhDiP2wPnyMkAlOtWDykI1VCEEHGzr7Gpcq6IfP6zbLYVmT0H_S3rHHTYSpYxs6LtQCaXHJ3iYOb=w1280',
+    img: "images/products/caibao-card.jpg",
     blurb: '全球獨一無二的財寶天王字曼陀羅開運招財朱印，当日修法祈請降臨加持，蓋上甘露王菩薩及聖曼陀羅朱印。',
     detail: [
       '與大家結緣無比殊勝、全球獨一無二的財寶天王字曼陀羅開運招財朱印。',
@@ -69,7 +69,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'holofilm', label: '加貼大藏經光柵膜', surcharge: 500 }
     ],
     stock: true, on_sale: true,
-    img: 'https://lh3.googleusercontent.com/sitesv/AG8ngQU8owoLmZ24bEqKcHNtYd2i9o5VTkNlsKjGhcq0-O0iJAqWVT0dC-_0PQc9BLH7grwWEZomoOkLDSvHrmEOd78md4zfVG6OXnyp3jDvfj41xEiKu3UlGQL9xHI0kmq10SLMOQaVcpSMliZdzdrISTEOver8cEzPFXvzl-LjseikV670fzGBNbvcuIDmqgLzwZebwyeifSt33vFwfnSSbbiS6KceYmBbJ5hba5VEgdY=w1280',
+    img: "images/products/gulugue-thangka.jpg",
     blurb: '作明佛母（咕嚕咕咧佛母），懷愛法中最強大的兩大本尊之一。正面亮銀面閃卡材質，聖輪宗特別繪製。',
     detail: [
       '作明佛母，藏傳佛教又稱為咕嚕咕咧佛母，漢地佛經記載的名稱是酤羅菩薩，是懷愛法中最強大的兩大本尊之一（另一為愛染明王）。',
@@ -94,7 +94,7 @@ window.ISAYA.PRODUCTS = [
       { id: 't108', label: '108 座大藏經光柵膜佛塔', surcharge: 32400 }
     ],
     stock: '現貨依備品，不足時排隊趕製', on_sale: true,
-    img: 'https://lh3.googleusercontent.com/sitesv/AG8ngQWpxeJBMjH3TNSiTz49VhOe7eRQUcnznYFJ1r7BUalIaX87wcDaU-iZuUxsgG-UR5NWdO78_jzEMHGH1HPrlQqlsI_yG9s1MMfTOQh8Bp920xtO1sTQb2cQjyICRNNgF3YJ30A1UtkcDFCJ1UWI01F06ZQF0TgZCAtknWOl5LBa04ImUPfOcMGKDTwzSbuboQVOyafFHeWALUBcLHnvwFzumCNH_px19wuJhP3fS74=w1280',
+    img: "images/products/umbrella.jpg",
     blurb: '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」，考慮良久並親身實驗近一年後才決定的強效辟邪護身方便法門。',
     detail: [
       '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」是我們考慮良久、並親身實驗將近一年之後，才決定跟同修們分享的超級法寶。',
@@ -121,7 +121,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '標準', surcharge: 0 }
     ],
     stock: '尚有庫存（限量）', on_sale: true,
-    img: 'https://lh3.googleusercontent.com/sitesv/AG8ngQUgTvQVW9_dYXefCTR6Guw7NETxJkpWNiD46cxcfGRiIaLvCJ4TCMxfw6RCAWdzDHISCkSbFdzpQdTm5t8lTdQeHZpNaUSwnD1_2uPcmA_zEf4Kk8ryIdtQjPQhqganpkpJo_pvhAQ2GaScuIqVSyCikdedBxHHJnhCZ6-aXCSnowvPjNI0scn4XjXcX-5Scm3h7bddpVFJlKn09UcJIzRUjQtYnYkUYWY_JiLZ=w1280',
+    img: "images/products/mirror-mandala.jpg",
     blurb: '順心自在、隨求滿願的神聖曼陀羅。全鋁合金雷雕上色，表層 1mm 透明保護墊，防鏽防蝕、耐曬耐熱。',
     detail: [
       '順心自在、隨求滿願的神聖曼陀羅。',
@@ -149,7 +149,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'no7', label: 'No.7 絲絹水波紋・龍宮珍品（約15.7g）', surcharge: 4200 }
     ],
     stock: '每件為斷代珍藏，售出即止', on_sale: true,
-    img: '',
+    img: "images/products/relic.jpg",
     blurb: '收藏超過二十年、完全沒有配戴過的珍品龍宮舍利，僅收藏保養，為共修中心壇城改建而釋出。',
     detail: [
       '這些超過二十年的珍品，完全沒有配戴過，僅只於收藏、保養，看上去都很漂亮，時間沒有在上面留下任何痕跡。',
@@ -210,7 +210,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '每顆 200 元', surcharge: 0 }
     ],
     stock: true, on_sale: true,
-    img: '',
+    img: "images/services/candle-light.jpg",
     blurb: '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈功德迴向給你所想祈求的事項。',
     detail: [
       '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈的功德迴向給你所想祈求的事項。',
@@ -228,7 +228,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '一盤 350 元', surcharge: 0 }
     ],
     stock: '每日同時僅 5 個名額', on_sale: true,
-    img: '',
+    img: "images/services/incense-seal.jpg",
     blurb: '觀自在菩薩大悲智印周遍法界利益眾生薰真如法（又名觀自在妙香印法），一盤大悲拔苦熏香。',
     detail: [
       '大悲拔苦熏香代點服務，一盤結緣價 350 元，每日同時只開放 5 個名額（香爐暫時只有 5 座）。',
@@ -246,7 +246,7 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '包月', surcharge: 0 }
     ],
     stock: '不限名額', on_sale: true,
-    img: 'https://lh3.googleusercontent.com/sitesv/AG8ngQVuAeA13zlv20FwntYxFNA-0jT9PKXLg2JPXf12yDfWRkTe3ivYlTkPFmK-3lrCLWeVn-eaY0VOBwfBCms8EPmeWpiOa8s0Wm0OK6yljsxyBwYCvmTXqCnnDTjiVaJsCZM7FVhBtn9HUWjs-ovifrHQ6GovCXUnmAHU4LNHkX3eqAXcFeNuYmRn7YKjbjmYgrlPH9-VECI4satLz0kwIUVQcKE3NyW7aOtDEvJfsAM=w1280',
+    img: "images/services/personal-practice.jpg",
     blurb: '當月份報名者集體擺供、個人單獨祈福卡，每月不同主尊、殊勝日修不同法。',
     detail: [
       '2026.04 起「個人專法」更改為法會 [包月] 贊助功德主，不限名額，並開放更多小額、隨喜的法會參贊項目，供更多想要祈福加持的同修依個人情況選擇報名。',

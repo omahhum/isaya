@@ -6,7 +6,7 @@
 
 // Firebase SDK (v10 compat 模式，CDN 直接載入於各 HTML head)
 firebase.initializeApp({
-  apiKey: "«reda...…»",
+  apiKey: "AIzaSyDpmCMLtHDuvTWFCKSNBDLFMmdGdQfA17I",
   authDomain: "studio-4305054348-a6a5f.firebaseapp.com",
   projectId: "studio-4305054348-a6a5f",
   storageBucket: "studio-4305054348-a6a5f.firebasestorage.app",
@@ -17,9 +17,8 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-// ⚠️ isaya 專用 GAS Web App（待部署後填入實際 URL）
-// 格式：https://script.google.com/macros/s/YOUR_ISAYA_SCRIPT_ID/exec
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/ISAYA_PLACEHOLDER/exec';
+// ⚠️ isaya 專用 GAS Web App（部署 v2，2026-10-06）
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_aYUGaSQV6u1QnkG4KuK_Wlisjj4vDpUxwq-JrglmDg8RZaq807IPsEn0QIjzZhQ/exec';
 
 // 初始化時確保 redirect 結果被解析（防止 Firebase 搶在 DOM 完成前觸發）
 auth.getRedirectResult().catch(err => {

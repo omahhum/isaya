@@ -58,6 +58,9 @@
 <script src="js/footer.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  ISAYA_API.loadProducts().then(init);
+
+  function init() {
   var params = new URLSearchParams(location.search);
   var id = params.get('id');
   var p = ISAYA.getProduct(id);
@@ -68,11 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // 圖片
-  var imgEl = document.getElementById('detailImg');
-  imgEl.innerHTML = p.img
-    ? '<img class="detail-img" src="' + p.img + '" alt="' + p.name + '">'
-    : '<div class="detail-img-ph">' + (p.type === 'service' ? '☸' : '◎') + '</div>';
+  // 圖片：img + 占位成對，走 api.js 候選回退（檔案缺失 → 舊圖 → 占位符）
+  var imgWrap = document.getElementById('detailImg');
+  imgWrap.innerHTML =
+    '<img class="detail-img" id="detailImgEl" src="" alt="' + p.name + '">' +
+    '<div class="detail-img-ph" id="detailImgPh" style="display:none;">' + (p.type === 'service' ? '☸' : '◎') + '</div>';
+
+  function rebindImg() {
+    var imgEl = document.getElementById('detailImgEl');
+    var phEl = document.getElementById('detailImgPh');
+    if (window.ISAYA_API && ISAYA_API.bindPair) ISAYA_API.bindPair(imgEl, phEl, p, curOpt());
+  }
 
   document.title = p.name + ' — 光圻靈的伊夏亞 isaya';
   document.getElementById('detailName').textContent = p.name;
@@ -101,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       var label = o.label + (o.surcharge ? '（+' + o.surcharge + '）' : '');
       return '<option value="' + o.id + '">' + label + '</option>';
     }).join('');
-    sel.onchange = updateTotal;
+    sel.onchange = function () { updateTotal(); rebindImg(); };
   } else {
     var baseOpt = p.options && p.options[0] ? p.options[0].id : '';
     window._curOpt = baseOpt;
@@ -148,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ISAYACart.add(p.id, optId, qty);
     isayaToast('已加入購物車：' + p.name + (p.group_order ? '（成團後通知付款）' : ''));
   };
+  rebindImg(); // 首次依目前選項綁定圖片
+  }
 });
 </script>
 </body>
