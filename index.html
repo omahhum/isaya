@@ -3,61 +3,505 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>光圻靈的伊夏亞 isaya — 品牌官方網站</title>
-  <meta name="description" content="光圻靈 伊夏亞 isaya 官方網站：結緣品線上訂購、祈福服務、見證回饋、品牌故事。">
+  <title>光祈靈的伊夏亞 isaya — 品牌官方網站</title>
+  <meta name="description" content="光祈靈 伊夏亞 isaya 官方網站：身心靈療癒、靈性創作、能量、香氛、水晶、塔羅、祈福蠟燭。">
   <link rel="stylesheet" href="css/style.css">
+  <!-- reveal on scroll 的 gate：JS 可用才隱藏待顯示（progressive enhancement，
+       JS 失敗時 html 不加 js-reveal，內容常駐可見，不影響） -->
+  <script>document.documentElement.classList.add('js-reveal');</script>
   <!-- Firebase SDK (compat) -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 </head>
 <body>
 
-<!-- Navigation -->
+<!-- ① Header：導覽列（top-menu.js 注入） -->
 <nav id="top-nav"></nav>
 
-<!-- Hero -->
-<section class="hero">
-  <h1 class="hero-title">光圻靈的伊夏亞</h1>
-  <p class="hero-sub">光麒麟 伊夏亞 isaya</p>
-  <p class="hero-tagline">
-    修福作業，把神聖帶進日常。<br>
-    結緣品、祈福服務、線上課程，這裡一站結緣。
-  </p>
-  <div class="hero-btns">
-    <a href="products.html" class="btn-gold solid">瀏覽結緣品</a>
-    <a href="services.html" class="btn-outline">祈福服務</a>
+<!-- ② Hero：品牌開場（Step 4 精品靈性第一視覺） -->
+<section class="hero" id="hero-home">
+  <!-- 左：品牌文字 42% -->
+  <div class="hero__left">
+    <p class="hero__eyebrow">身心靈療癒 × 靈性創作</p>
+    <h1 class="hero__title">光祈靈的<br>伊夏亞</h1>
+    <p class="hero__en">Light Wish Soul – Eshya</p>
+    <p class="hero__tagline">讓光，回到你的靈魂深處</p>
+    <p class="hero__desc">以光與能量，陪你走過內在療癒旅程。</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="services.html">預約療癒</a>
+      <a class="btn btn--ghost" href="services.html">探索服務</a>
+    </div>
+  </div>
+
+  <!-- 右：女性角色視覺焦點 58% -->
+  <div class="hero__right">
+    <div class="hero__halo" aria-hidden="true"></div>
+    <!-- HERO CHARACTER IMAGE -->
+    <!-- 人物 placeholder：待補「東方女性・長髮・溫柔・神秘・仙氣・療癒」角色圖（4:5 直構圖）。
+         補圖時替換為 <img src="images/hero/character.jpg" alt="光祈靈的伊夏亞"> -->
+    <div class="hero-character hero-character--ph">
+      <span class="hero-character__hint">東方女性角色圖<br>（placeholder・待補）</span>
+    </div>
+    <!-- 微光／金點／星點裝飾（純 CSS 微光，未用實圖，克制） -->
+    <div class="hero__particles" aria-hidden="true">
+      <i class="hero__spark hero__spark--1"></i>
+      <i class="hero__spark hero__spark--2"></i>
+      <i class="hero__spark hero__spark--3"></i>
+      <i class="hero__spark hero__spark--4"></i>
+    </div>
   </div>
 </section>
 
-<!-- 精選結緣品 -->
-<section class="section">
-  <div class="page-loader" id="pageLoader"><div class="loader-ring"></div>載入中…</div>
-  <h2 class="section-title">精選結緣品</h2>
-  <p class="section-sub">大藏經光柵膜・懷愛法・辟邪護身，依緣取用</p>
-  <div class="product-grid" id="featuredGrid" style="display:none;"></div>
-  <div class="section-center" style="margin-top:2rem;">
-    <a href="products.html" class="btn-gold">看全部結緣品</a>
+<!-- 三欄品牌資訊區：Hero 正下方 -->
+<section class="section" id="brand-intro">
+  <div class="brand-grid">
+
+    <!-- 01 About Me -->
+    <article class="brand-card">
+      <span class="brand-card__no">01</span>
+      <h3 class="brand-card__title">About Me｜關於我</h3>
+      <span class="brand-card__deco" aria-hidden="true"></span>
+      <div class="brand-card__body">
+        <dl class="brand-list">
+          <div class="brand-row"><dt>名字</dt><dd>光祈靈的伊夏亞</dd></div>
+          <div class="brand-row"><dt>英文名</dt><dd>Light Wish Soul – Eshya</dd></div>
+          <div class="brand-row"><dt>身份</dt><dd>能量療癒師／靈性創作者／祈福蠟燭</dd></div>
+          <div class="brand-row"><dt>領域</dt><dd>身心靈療癒／塔羅占卜／能量香氛／水晶</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 02 Style Tags -->
+    <article class="brand-card">
+      <span class="brand-card__no">02</span>
+      <h3 class="brand-card__title">Style Tags｜風格標籤</h3>
+      <span class="brand-card__deco" aria-hidden="true"></span>
+      <div class="brand-card__body">
+        <ul class="tag-chips">
+          <li class="tag-chips__item">#能量療癒</li>
+          <li class="tag-chips__item">#香氣氛圍</li>
+          <li class="tag-chips__item">#靈性成長</li>
+          <li class="tag-chips__item">#塔羅占卜</li>
+          <li class="tag-chips__item">#水晶能量</li>
+          <li class="tag-chips__item">#療癒日常</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 03 Brand & Content -->
+    <article class="brand-card">
+      <span class="brand-card__no">03</span>
+      <h3 class="brand-card__title">Brand &amp; Content｜品牌合作 × 內容版圖</h3>
+      <span class="brand-card__deco" aria-hidden="true"></span>
+      <div class="brand-card__body">
+        <p class="brand-card__lead">內容方向</p>
+        <ul class="brand-list--dots">
+          <li>美妝保養</li>
+          <li>穿搭風格</li>
+          <li>能量配件</li>
+          <li>乙女周邊</li>
+          <li>療癒生活</li>
+          <li>靈性生活</li>
+        </ul>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<!-- 祈福服務 -->
-<section class="section section-dark">
-  <h2 class="section-title">祈福服務</h2>
-  <p class="section-sub">個人專法・點燈・香印代點・線上課程</p>
-  <div class="product-grid" id="serviceGrid" style="display:none;"></div>
-  <div class="section-center" style="margin-top:2rem;">
-    <a href="services.html" class="btn-outline">所有服務</a>
+<!-- ③ Brand Feature：核心特色 -->
+<section class="section" id="brand-features">
+  <div class="section__head">
+    <h2 class="section__title">核心特色</h2>
+    <p class="section__sub">伊夏亞做的事，用三句話說清楚</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3 class="feature-card__title">神聖創作</h3>
+      <p class="feature-card__text">以創作為媒介，把神聖的符號、咒輪、意象帶進日常使用的物件裡。</p>
+    </article>
+    <article class="feature-card">
+      <h3 class="feature-card__title">療癒陪伴</h3>
+      <p class="feature-card__text">不是賣產品，而是提供一個療癒的入口：香氛、水晶、塔羅、點燈，各自對應一段需要被安放的時刻。</p>
+    </article>
+    <article class="feature-card">
+      <h3 class="feature-card__title">能量工作</h3>
+      <p class="feature-card__text">結合能量療癒與心理學背景，做私人化的能量整理與陪伴，而非標準化的宗教服務。</p>
+    </article>
   </div>
 </section>
 
-<!-- 見證 CTA -->
-<div class="cta-banner">
-  <h2>感應分享・見證回饋</h2>
-  <p>用了之後生活的小變化，同修現身說法</p>
-  <a href="testimonials.html" class="btn-gold">看見見證回饋</a>
-</div>
+<!-- ④ About Me：關於我 -->
+<section class="section section--tinted" id="about-me">
+  <div class="about-grid">
+    <figure class="about-grid__photo">
+      <!-- 圖片待補：替換成 <img src="images/..." alt="香海"> -->
+      <span class="img-placeholder">圖片待補：香海</span>
+    </figure>
+    <div class="about-grid__body">
+      <h2 class="about-grid__title">關於我</h2>
+      <p class="about-grid__text">
+        我是香海，是「光祈靈 伊夏亞 isaya」的創辦人，也是品牌故事裡的光麒麟。
+        在成為療癒者之前，我學的是心理學，走過催眠、頌缽、阿卡西，也長年持咒修密。
+        用理性看過的東西，加上被療癒改變過的經驗，讓我今天能同時保有「科學」和「信仰」這兩種語言。
+      </p>
+      <p class="about-grid__text">
+        伊夏亞做的事，是把你生命中那些隱形的需要，做成看得見、用得著的東西。
+      </p>
+      <a class="btn btn--ghost" href="about.html">完整的品牌故事</a>
+    </div>
+  </div>
+</section>
 
-<!-- Footer -->
+<!-- ⑤ Style Tags：風格標籤 -->
+<section class="section" id="style-tags">
+  <div class="section__head">
+    <h2 class="section__title">我們談的是什麼</h2>
+    <p class="section__sub">伊夏亞的工作與內容，集中在這幾個主題</p>
+  </div>
+  <ul class="tag-list">
+    <li class="tag-list__item">身心靈療癒</li>
+    <li class="tag-list__item">靈性創作</li>
+    <li class="tag-list__item">能量工作</li>
+    <li class="tag-list__item">香氛</li>
+    <li class="tag-list__item">水晶</li>
+    <li class="tag-list__item">塔羅</li>
+    <li class="tag-list__item">祈福蠟燭</li>
+    <li class="tag-list__item">女性成長</li>
+  </ul>
+</section>
+
+<!-- ⑥ Brand & Content：品牌內容 -->
+<section class="section section--tinted" id="brand-content">
+  <div class="section__head">
+    <h2 class="section__title">品牌內容</h2>
+    <p class="section__sub">伊夏亞的內容，不只停在一件商品上</p>
+  </div>
+  <div class="content-grid">
+    <a class="content-card" href="https://lightwishsoul.blogspot.com/" target="_blank" rel="noopener">
+      <h3 class="content-card__title">日記與文章</h3>
+      <p class="content-card__text">創作過程、療癒筆記、生活隨感。</p>
+      <span class="content-card__link">前往網誌 →</span>
+    </a>
+    <a class="content-card" href="https://open.firstory.me/user/lightwishsoul/platforms" target="_blank" rel="noopener">
+      <h3 class="content-card__title">Podcast・心流</h3>
+      <p class="content-card__text">身心靈主題的訪談與對談，收錄與延伸整理。</p>
+      <span class="content-card__link">收聽 Podcast →</span>
+    </a>
+    <a class="content-card" href="services.html">
+      <h3 class="content-card__title">線上課程</h3>
+      <p class="content-card__text">把療癒的方法，整理成可以跟著做的課程。</p>
+      <span class="content-card__link">了解課程 →</span>
+    </a>
+    <a class="content-card" href="about.html">
+      <h3 class="content-card__title">關於光祈靈</h3>
+      <p class="content-card__text">品牌如何從一次感應長出來，到變成今天的样子。</p>
+      <span class="content-card__link">讀品牌故事 →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ⑦ Top Posts：人氣貼文 -->
+<section class="section" id="top-posts">
+  <div class="section__head">
+    <p class="section__eyebrow">人氣貼文預覽</p>
+    <h2 class="section__title">Top Posts</h2>
+    <p class="section__sub">最近被轉傳、被留言最多的四篇</p>
+  </div>
+  <div class="post-grid post-grid--4">
+    <!-- placeholder 圖片：補圖時換 <img src="images/posts/p01.jpg" alt="..."> -->
+    <a class="post-card" href="https://lightwishsoul.blogspot.com/" target="_blank" rel="noopener">
+      <div class="post-card__media">
+        <!-- POST IMAGE -->
+        <span class="img-placeholder">貼文圖 01</span>
+      </div>
+      <div class="post-card__body">
+        <span class="post-card__no">01</span>
+        <h3 class="post-card__title">「最近的你，是不是有點累了？」</h3>
+        <p class="post-card__text">當身心開始失去平衡，先別硬撐。從一次安靜的呼吸，把焦點放回到自己身上。</p>
+        <span class="post-card__link">讀全文 →</span>
+      </div>
+    </a>
+    <a class="post-card" href="https://lightwishsoul.blogspot.com/" target="_blank" rel="noopener">
+      <div class="post-card__media">
+        <!-- POST IMAGE -->
+        <span class="img-placeholder">貼文圖 02</span>
+      </div>
+      <div class="post-card__body">
+        <span class="post-card__no">02</span>
+        <h3 class="post-card__title">「這款香氣，能幫你慢慢安定下來。」</h3>
+        <p class="post-card__text">點一炷香，把空間的頻率調慢。讓香氣陪你，把焦慮一點一點放下。</p>
+        <span class="post-card__link">讀全文 →</span>
+      </div>
+    </a>
+    <a class="post-card" href="https://lightwishsoul.blogspot.com/" target="_blank" rel="noopener">
+      <div class="post-card__media">
+        <!-- POST IMAGE -->
+        <span class="img-placeholder">貼文圖 03</span>
+      </div>
+      <div class="post-card__body">
+        <span class="post-card__no">03</span>
+        <h3 class="post-card__title">「塔羅訊息：你正在走向新的自己。」</h3>
+        <p class="post-card__text">抽一張牌，不是看命運，而是幫你看見自己心裡早已有的方向。</p>
+        <span class="post-card__link">讀全文 →</span>
+      </div>
+    </a>
+    <a class="post-card" href="https://lightwishsoul.blogspot.com/" target="_blank" rel="noopener">
+      <div class="post-card__media">
+        <!-- POST IMAGE -->
+        <span class="img-placeholder">貼文圖 04</span>
+      </div>
+      <div class="post-card__body">
+        <span class="post-card__no">04</span>
+        <h3 class="post-card__title">「今天的儀式感：替自己留一點光。」</h3>
+        <p class="post-card__text">再忙，也留一小段給自己。一盞燈、一杯茶，把日常過出節奏感。</p>
+        <span class="post-card__link">讀全文 →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ⑧ Character Profile：角色介紹 -->
+<section class="section section--tinted" id="character-profile">
+  <div class="section__head">
+    <p class="section__eyebrow">角色介紹</p>
+    <h2 class="section__title">Character Profile</h2>
+    <p class="section__sub">認識品牌裡的「她」——伊夏亞</p>
+  </div>
+  <div class="character-grid character-grid--profile">
+    <!-- 左：文字介紹 -->
+    <div class="character-profile__text">
+      <p class="character-profile__intro">
+        伊夏亞是品牌裡的「她」，一個從神靈感應中長出來的形象。
+        溫柔、神秘、帶著療癒感，負責把高深的能量與儀式，轉譯成日常生活的語言。
+      </p>
+      <dl class="character-dl">
+        <div class="character-row"><dt>瞳色</dt><dd>溫柔棕金色</dd></div>
+        <div class="character-row"><dt>髮型</dt><dd>微捲長髮／自然感</dd></div>
+        <div class="character-row"><dt>外在風格</dt><dd>溫柔神秘・療癒系・帶一點儀式感</dd></div>
+        <div class="character-row"><dt>居家風格</dt><dd>香氛 × 水晶 × 柔和光線</dd></div>
+        <div class="character-row"><dt>個性</dt><dd>溫柔・真誠・療癒感</dd></div>
+      </dl>
+      <p class="character-profile__label">喜歡</p>
+      <ul class="character-like">
+        <li>香氣</li>
+        <li>安靜空間</li>
+        <li>月光</li>
+        <li>水晶</li>
+        <li>蠟燭</li>
+        <li>塔羅</li>
+      </ul>
+    </div>
+    <!-- 右：人物圖片 -->
+    <figure class="character-profile__art">
+      <!-- CHARACTER PROFILE IMAGE -->
+      <!-- 人物 placeholder：東方女性角色圖（4:5 直構圖）。補圖時換 <img src="images/character/profile.jpg" alt="伊夏亞"> -->
+      <span class="img-placeholder">人物圖（placeholder・待補）</span>
+      <figcaption class="character-profile__caption">伊夏亞・Eshya</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ⑨ Gallery：靈性生活日常 -->
+<section class="section" id="gallery">
+  <div class="section__head">
+    <p class="section__eyebrow">Gallery</p>
+    <h2 class="section__title">靈性生活日常</h2>
+    <p class="section__sub">記錄那些與光、香、水晶相伴的日常時刻</p>
+  </div>
+  <div class="gallery-row">
+    <!-- 5 張圖皆為 placeholder：補圖時換 <img src="images/gallery/g01.jpg" alt="香氣時光"> -->
+    <!-- GALLERY IMAGE -->
+    <figure class="gallery-item">
+      <div class="gallery-item__media"><span class="img-placeholder">待補</span></div>
+      <figcaption class="gallery-item__cap"><span class="gallery-item__no">01</span>香氣時光</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="gallery-item__media"><span class="img-placeholder">待補</span></div>
+      <figcaption class="gallery-item__cap"><span class="gallery-item__no">02</span>塔羅占卜</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="gallery-item__media"><span class="img-placeholder">待補</span></div>
+      <figcaption class="gallery-item__cap"><span class="gallery-item__no">03</span>療癒工作</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="gallery-item__media"><span class="img-placeholder">待補</span></div>
+      <figcaption class="gallery-item__cap"><span class="gallery-item__no">04</span>靜心冥想</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <div class="gallery-item__media"><span class="img-placeholder">待補</span></div>
+      <figcaption class="gallery-item__cap"><span class="gallery-item__no">05</span>月光儀式</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ⑩ Lifestyle：生活風格 -->
+<section class="section section--tinted" id="lifestyle">
+  <div class="section__head">
+    <p class="section__eyebrow">Lifestyle</p>
+    <h2 class="section__title">生活風格</h2>
+    <p class="section__sub">把療癒活進日常的節奏裡</p>
+  </div>
+  <div class="lifestyle-row">
+    <!-- 4 張圓形圖 placeholder：補圖時換 <img src="images/lifestyle/scent.jpg" alt="香氣"> -->
+    <!-- LIFESTYLE IMAGE -->
+    <article class="lifestyle-item">
+      <div class="lifestyle-item__ring">
+        <div class="lifestyle-item__media"><span class="img-placeholder">待補</span></div>
+      </div>
+      <h3 class="lifestyle-item__title">香氣</h3>
+      <p class="lifestyle-item__text">讓一盞香、一縷煙，把空間的頻率調慢。</p>
+    </article>
+    <article class="lifestyle-item">
+      <div class="lifestyle-item__ring">
+        <div class="lifestyle-item__media"><span class="img-placeholder">待補</span></div>
+      </div>
+      <h3 class="lifestyle-item__title">光</h3>
+      <p class="lifestyle-item__text">點一盞燈，讓光成為日常生活裡的小儀式。</p>
+    </article>
+    <article class="lifestyle-item">
+      <div class="lifestyle-item__ring">
+        <div class="lifestyle-item__media"><span class="img-placeholder">待補</span></div>
+      </div>
+      <h3 class="lifestyle-item__title">靜心</h3>
+      <p class="lifestyle-item__text">留一段安靜的時刻，讓心真正落下來。</p>
+    </article>
+    <article class="lifestyle-item">
+      <div class="lifestyle-item__ring">
+        <div class="lifestyle-item__media"><span class="img-placeholder">待補</span></div>
+      </div>
+      <h3 class="lifestyle-item__title">能量流動</h3>
+      <p class="lifestyle-item__text">順著身體的訊號，讓能量自然地流動、平衡。</p>
+    </article>
+  </div>
+</section>
+
+<!-- ⑪ Testimonials：粉絲留言 -->
+<section class="section" id="testimonials">
+  <div class="section__head">
+    <p class="section__eyebrow">Your Words</p>
+    <h2 class="section__title">粉絲留言</h2>
+    <p class="section__sub">來自生活裡的光（placeholder：待替換成經授權的真實留言）</p>
+  </div>
+  <div class="testimonial-grid">
+    <!-- placeholder：三則為格式示範，文字與署名需替換成經用戶授權的真實留言 -->
+    <!-- AVATAR：替換成 <img src="images/avatars/u01.jpg" alt="留言者"> -->
+    <blockquote class="testimonial-card">
+      <div class="testimonial-card__avatar">
+        <!-- TESTIMONIAL AVATAR 01 -->
+        <span class="img-placeholder">avatar</span>
+      </div>
+      <p class="testimonial-card__text">（placeholder）留言內容一：用了之後生活裡的小變化，一到三句。</p>
+      <footer class="testimonial-card__foot">
+        <span class="testimonial-card__name">署名 1・品項／服務名</span>
+        <svg class="testimonial-card__heart" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+      </footer>
+    </blockquote>
+    <blockquote class="testimonial-card">
+      <div class="testimonial-card__avatar">
+        <!-- TESTIMONIAL AVATAR 02 -->
+        <span class="img-placeholder">avatar</span>
+      </div>
+      <p class="testimonial-card__text">（placeholder）留言內容二：用了之後生活裡的小變化，一到三句。</p>
+      <footer class="testimonial-card__foot">
+        <span class="testimonial-card__name">署名 2・品項／服務名</span>
+        <svg class="testimonial-card__heart" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+      </footer>
+    </blockquote>
+    <blockquote class="testimonial-card">
+      <div class="testimonial-card__avatar">
+        <!-- TESTIMONIAL AVATAR 03 -->
+        <span class="img-placeholder">avatar</span>
+      </div>
+      <p class="testimonial-card__text">（placeholder）留言內容三：用了之後生活裡的小變化，一到三句。</p>
+      <footer class="testimonial-card__foot">
+        <span class="testimonial-card__name">署名 3・品項／服務名</span>
+        <svg class="testimonial-card__heart" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ⑫ Brand Banner：情緒高潮橫幅 -->
+<section class="brand-banner" id="brand-banner">
+  <!-- 背景氛圍：月亮／星光／水晶／暖金燭光（裝飾元素，靜態） -->
+  <div class="brand-banner__moon" aria-hidden="true"></div>
+  <div class="brand-banner__glow brand-banner__glow--candle" aria-hidden="true"></div>
+  <div class="brand-banner__glow brand-banner__glow--crystal" aria-hidden="true"></div>
+  <div class="brand-banner__stars" aria-hidden="true">
+    <span class="star star--1"></span>
+    <span class="star star--2"></span>
+    <span class="star star--3"></span>
+    <span class="star star--4"></span>
+    <span class="star star--5"></span>
+    <span class="star star--6"></span>
+    <span class="star star--7"></span>
+    <span class="star star--8"></span>
+  </div>
+  <div class="brand-banner__inner">
+    <h2 class="brand-banner__title">慢慢活，<br>讓靈魂跟上來</h2>
+    <p class="brand-banner__sub">Light Wish Soul</p>
+  </div>
+</section>
+
+<!-- ⑬ Services：服務項目 -->
+<section class="section" id="services">
+  <div class="section__head">
+    <p class="section__eyebrow">Services</p>
+    <h2 class="section__title">服務項目</h2>
+    <p class="section__sub">個人化的療癒服務，每一項都可以預約</p>
+  </div>
+  <div class="service-row">
+    <!-- icon placeholder：可換成 <img> 或保留 svg icon -->
+    <a class="service-item" href="services.html">
+      <div class="service-item__icon">
+        <!-- SERVICE ICON 01 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg>
+      </div>
+      <h3 class="service-item__title">能量療癒</h3>
+      <p class="service-item__text">以光與能量，陪你走回內在的平衡與安定。</p>
+      <span class="service-item__more">了解更多 →</span>
+    </a>
+    <a class="service-item" href="services.html">
+      <div class="service-item__icon">
+        <!-- SERVICE ICON 02 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>
+      </div>
+      <h3 class="service-item__title">塔羅占卜</h3>
+      <p class="service-item__text">一張牌，一段訊息，為你的人生轉折提供方向。</p>
+      <span class="service-item__more">了解更多 →</span>
+    </a>
+    <a class="service-item" href="services.html">
+      <div class="service-item__icon">
+        <!-- SERVICE ICON 03 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c2.5 3.5 4 6 4 8.5a4 4 0 0 1-8 0C8 9 9.5 6.5 12 3z"/><path d="M6 19c1.8-1.5 3.6-2 6-2s4.2.5 6 2"/></svg>
+      </div>
+      <h3 class="service-item__title">能量香氣</h3>
+      <p class="service-item__text">用香氣安頓空間與情緒，讓身心慢慢落地。</p>
+      <span class="service-item__more">了解更多 →</span>
+    </a>
+    <a class="service-item" href="services.html">
+      <div class="service-item__icon">
+        <!-- SERVICE ICON 04 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l6 5-2 12h-8L6 8z"/><path d="M12 3v17M6 8h12M9 13l3 7 3-7"/></svg>
+      </div>
+      <h3 class="service-item__title">水晶能量</h3>
+      <p class="service-item__text">依你的能量需求，挑選水晶陪你日常調頻。</p>
+      <span class="service-item__more">了解更多 →</span>
+    </a>
+    <a class="service-item" href="services.html">
+      <div class="service-item__icon">
+        <!-- SERVICE ICON 05 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v3l1.5 2v11a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 8 19V8L9.5 6z"/><path d="M12 9c1.2 1.2 1.8 2.3 1.8 3.4a1.8 1.8 0 0 1-3.6 0c0-1.1.6-2.2 1.8-3.4z"/></svg>
+      </div>
+      <h3 class="service-item__title">許願蠟燭</h3>
+      <p class="service-item__text">點一盞光，把心愿安放，也為你祈願祝福。</p>
+      <span class="service-item__more">了解更多 →</span>
+    </a>
+  </div>
+</section>
+
+<!-- ⑭ Footer（footer.js 注入） -->
 <div id="footer-placeholder"></div>
 
 <script src="js/auth.js"></script>
@@ -69,20 +513,35 @@
 <script src="js/auth-nav.js"></script>
 <script src="js/footer.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  ISAYA_API.loadProducts().then(function () {
-    fillProductGrid(document.getElementById('featuredGrid'), ISAYA.byType('product').slice(0, 4));
-    fillProductGrid(document.getElementById('serviceGrid'), ISAYA.byType('service').slice(0, 4));
-    var loader = document.getElementById('pageLoader');
-    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
-    document.getElementById('featuredGrid').style.display = '';
-    document.getElementById('serviceGrid').style.display = '';
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  // 維持既有功能：拉取試算表商品資料（購物車／價格同步）
+  if (typeof ISAYA_API !== 'undefined') {
+    ISAYA_API.loadProducts();
+  }
 
+  // fade-in（Step 2 再做視覺，先保留 observer 不破壞現有行為）
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: .1 });
   document.querySelectorAll('.fade-in').forEach(function (el) { observer.observe(el); });
+
+  // ⑦ Section reveal on scroll：進入視窗時淡入上移（1.15s、cubic-bezier）
+  // 尊重 prefers-reduced-motion：開啟時直接顯示、不做位移
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealTargets = document.querySelectorAll('.section, .hero, .brand-banner');
+  if (reduceMotion) {
+    revealTargets.forEach(function (el) { el.classList.add('is-revealed'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-revealed');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    revealTargets.forEach(function (el) { revealObserver.observe(el); });
+  }
 });
 </script>
 </body>
