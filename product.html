@@ -87,18 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('detailWrap').style.display = '';
 
   // 一頁式圖文長文（簡介之下、回總覽之上）
+  // 直覺修改入口：website/articles/{品項ID}.html（檔名＝品項 ID，VSCode 直改直預覽）。
+  // 抓不到該檔時，自動回退到 js/products-full.js 裡同 ID 的內容。
   var storyEl = document.getElementById('fullStory');
-  var full = (window.ISAYA_FULL && window.ISAYA_FULL[p.id]) || [];
-  if (full.length) {
-    storyEl.innerHTML =
-      '<h2>圖文長文</h2>' +
-      full.map(function (b) {
-        var h = '';
-        if (b.img) h = '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" alt="' + p.name + '" loading="lazy"></div>';
-        var ps = (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('');
-        return '<div class="story-block">' + h + ps + '</div>';
-      }).join('');
-    // 長文內圖缺失 → 自動換占位符
+  function renderStoryHTML(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var story = doc.querySelector('.detail-story');
+    if (!story) return false;
+    storyEl.innerHTML = story.innerHTML;
     storyEl.querySelectorAll('img.story-img').forEach(function (im) {
       im.onerror = function () {
         var ph = document.createElement('div');
@@ -107,7 +103,23 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     });
     storyEl.style.display = '';
+    return true;
   }
+  fetch('articles/' + encodeURIComponent(p.id) + '.html')
+    .then(function (r) {
+      if (r.ok) return r.text();
+      // 沒有獨立檔案 → 回退到 products-full.js
+      var full = (window.ISAYA_FULL && window.ISAYA_FULL[p.id]) || [];
+      if (!full.length) throw new Error('no content');
+      var html = '<div class="detail-story">' +
+        full.map(function (b) {
+          var h = b.img ? '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" loading="lazy" alt=""></div>' : '';
+          return '<div class="story-block">' + h + (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div>';
+        }).join('') + '</div>';
+      return html;
+    })
+    .then(renderStoryHTML)
+    .catch(function () { /* 兩者皆無：不顯示長文 */ });
 
   // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：檔案缺失 → 舊圖 → 占位符）
   var imgWrap = document.getElementById('detailImg');

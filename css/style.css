@@ -307,13 +307,14 @@ img { max-width: 100%; }
 /* ---- 商品詳情頁 ---- */
 .detail-wrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   gap: 3rem;
   align-items: start;
 }
+.detail-side { min-width: 0; }
 .detail-img {
-  width: 100%; min-height: 300px;
-  object-fit: cover; display: block;
+  width: 100%; min-height: 200px;
+  object-fit: contain; display: block;
   border: 1px solid var(--line);
   background: #080e1a;
 }
@@ -342,7 +343,6 @@ img { max-width: 100%; }
   opacity: 1; border-color: var(--gold);
   box-shadow: 0 0 0 2px rgba(212,175,55,.4);
 }
-.detail-img { min-height: 380px; }
 /* 導語段落（標題下、價格上） */
 .detail-blurb {
   font-size: 1rem; line-height: 1.9; color: var(--text-muted);
