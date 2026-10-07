@@ -42,8 +42,8 @@ function renderTopNav() {
   navEl.innerHTML =
 `<nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="光祈靈的伊夏亞 首頁">
-      <span class="nav-logo__cn">光祈靈的伊夏亞</span>
+    <a href="index.html" class="nav-logo" aria-label="光圻靈的伊夏亞 首頁">
+      <span class="nav-logo__cn">光圻靈的伊夏亞</span>
       <span class="nav-logo__en">Light Wish Soul</span>
     </a>
 

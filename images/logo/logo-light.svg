@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 168" role="img" aria-label="Light Wish Soul 光圻靈的伊夏亞（淺色版）">
+  <title>Light Wish Soul — 光圻靈的伊夏亞（淺色版）</title>
+  <defs>
+    <linearGradient id="lws-gold-l" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBEFC9"/>
+      <stop offset=".5" stop-color="#E8CE8A"/>
+      <stop offset="1" stop-color="#D4A843"/>
+    </linearGradient>
+  </defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=Noto+Serif+TC:wght@500&amp;display=swap');
+    .wm { font-family:'Cormorant Garamond','Times New Roman',Georgia,serif; font-weight:600; }
+    .cn { font-family:'Noto Serif TC','Microsoft JhengHei',serif; font-weight:500; }
+  </style>
+
+  <g transform="translate(20,34)">
+    <circle cx="50" cy="50" r="49" fill="none" stroke="url(#lws-gold-l)" stroke-width="1.4"/>
+    <circle cx="50" cy="50" r="41" fill="none" stroke="#E8CE8A" stroke-width=".5" opacity=".5"/>
+    <path d="M50 12 C52.6 36 58 41.4 82 44 C58 46.6 52.6 52 50 76 C47.4 52 42 46.6 18 44 C42 41.4 47.4 36 50 12 Z"
+          fill="url(#lws-gold-l)"/>
+    <circle cx="50" cy="44" r="3.2" fill="#FFFFFF" opacity=".85"/>
+  </g>
+
+  <text class="wm" x="152" y="76" font-size="44" fill="#FFF8E7" letter-spacing="2.4">Light Wish Soul</text>
+  <text class="cn" x="153" y="118" font-size="27" fill="#F3E8FF" letter-spacing="5">光圻靈的伊夏亞</text>
+  <line x1="153" y1="132" x2="352" y2="132" stroke="#E8CE8A" stroke-width=".8" opacity=".6"/>
+</svg>

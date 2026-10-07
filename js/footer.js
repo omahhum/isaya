@@ -14,7 +14,7 @@
   el.outerHTML =
 `<footer class="footer">
   <div class="footer__brand">
-    <div class="footer__name">光祈靈的伊夏亞</div>
+    <div class="footer__name">光圻靈的伊夏亞</div>
     <div class="footer__en">Light Wish Soul</div>
     <p class="footer__tag">「相信靈魂連結，遇見真正的自己。」</p>
     <div class="footer__social">

@@ -681,6 +681,7 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow-soft); background: var(--surface-card-2);
   aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center;
 }
+.about-grid__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .about-grid__title { font-size: 1.9rem; font-weight: 500; margin-bottom: 1rem; }
 .about-grid__text { color: var(--color-text-2); font-size: .95rem; line-height: 2; margin-bottom: 1.1rem; }
 .about-grid__body .btn { margin-top: .5rem; }
@@ -967,6 +968,11 @@ img { max-width: 100%; display: block; }
     linear-gradient(160deg, #3a2f47 0%, var(--color-deep-plum) 46%, #4a3f52 100%);
   border-top: 1px solid var(--color-gold-line);
   border-bottom: 1px solid var(--color-gold-line);
+}
+/* 背景氛圍底圖：疊在漸層上，維持原本深紫調性（照片提供質感，漸層仍為主調） */
+.brand-banner__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .5; pointer-events: none;
 }
 /* 月亮 */
 .brand-banner__moon {
