@@ -43,8 +43,11 @@ function renderTopNav() {
 `<nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="光圻靈的伊夏亞 首頁">
-      <span class="nav-logo__cn">光圻靈的伊夏亞</span>
-      <span class="nav-logo__en">Light Wish Soul</span>
+      <img class="nav-logo__mark" src="images/logo/isaya-emblem-sm.png" alt="" width="160" height="160">
+      <span class="nav-logo__box">
+        <span class="nav-logo__cn">光圻靈的伊夏亞</span>
+        <span class="nav-logo__en">Light Wish Soul</span>
+      </span>
     </a>
 
     <div class="nav-drop">
