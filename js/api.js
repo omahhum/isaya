@@ -79,11 +79,13 @@
     loadProducts: function () {
       if (loaded) return loaded;
       var settled = false;
+      var settleShim = null;   // resolve 只在 executor 內有效，需先提出來給 resolveLocal 用
       function resolveLocal() {
         if (settled) return; settled = true;
-        resolve({ source: 'local', products: window.ISAYA.PRODUCTS });
+        if (settleShim) settleShim({ source: 'local', products: window.ISAYA.PRODUCTS });
       }
       loaded = new Promise(function (resolve) {
+        settleShim = resolve;
         var timer = setTimeout(resolveLocal, 5000); // GAS 太慢 → 先用本機顯示，載入動畫不卡死
         fetch(APPS_SCRIPT_URL + '?action=getProducts')
           .then(function (r) { return r.text(); })

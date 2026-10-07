@@ -63,7 +63,57 @@
 <script src="js/footer.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  var bootId = new URLSearchParams(location.search).get('id');
+  loadStory(bootId);                    // 長文獨立載入，不等商品清單
   ISAYA_API.loadProducts().then(init);
+
+  // 長文載入：立即 fetch articles/{id}.html（抓不到才回退 products-full.js）
+  function loadStory(id) {
+    var storyEl = document.getElementById('fullStory');
+    if (!storyEl || !id) return;
+    function sym() {
+      var pp = (window.ISAYA && ISAYA.getProduct) ? ISAYA.getProduct(id) : null;
+      return (pp && pp.type === 'service') ? '☸' : '◎';
+    }
+    function bindImg(im) {
+      im.onerror = function () {
+        var ph = document.createElement('div');
+        ph.className = 'story-img-ph'; ph.textContent = sym();
+        im.replaceWith(ph);
+      };
+    }
+    function applyHTML(html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var story = doc.querySelector('.detail-story');
+      if (!story) return false;
+      // 先把每個節點搬進 fragment 並掛好 onerror，最後才插入 DOM：
+      // 避免圖片在掛上 handler 之前就載入失敗，而留下一塊無聲的隱形空白。
+      var frag = document.createDocumentFragment();
+      Array.prototype.slice.call(story.children).forEach(function (el) {
+        var ims = [];
+        if (el.matches && el.matches('img.story-img')) ims.push(el);
+        if (el.querySelectorAll) ims = ims.concat(Array.prototype.slice.call(el.querySelectorAll('img.story-img')));
+        ims.forEach(bindImg);
+        frag.appendChild(el);
+      });
+      storyEl.innerHTML = '';
+      storyEl.appendChild(frag);
+      storyEl.style.display = '';
+      return true;
+    }
+    fetch('articles/' + encodeURIComponent(id) + '.html')
+      .then(function (r) {
+        if (r.ok) return r.text();
+        var full = (window.ISAYA_FULL && window.ISAYA_FULL[id]) || [];
+        if (!full.length) throw new Error('no content');
+        return '<div class="detail-story">' + full.map(function (b) {
+          var h = b.img ? '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" loading="lazy" alt=""></div>' : '';
+          return '<div class="story-block">' + h + (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div>';
+        }).join('') + '</div>';
+      })
+      .then(applyHTML)
+      .catch(function () { /* 兩者皆無：不顯示長文 */ });
+  }
 
   function init() {
   var params = new URLSearchParams(location.search);
@@ -86,40 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   document.getElementById('detailWrap').style.display = '';
 
-  // 一頁式圖文長文（簡介之下、回總覽之上）
-  // 直覺修改入口：website/articles/{品項ID}.html（檔名＝品項 ID，VSCode 直改直預覽）。
-  // 抓不到該檔時，自動回退到 js/products-full.js 裡同 ID 的內容。
-  var storyEl = document.getElementById('fullStory');
-  function renderStoryHTML(html) {
-    var doc = new DOMParser().parseFromString(html, 'text/html');
-    var story = doc.querySelector('.detail-story');
-    if (!story) return false;
-    storyEl.innerHTML = story.innerHTML;
-    storyEl.querySelectorAll('img.story-img').forEach(function (im) {
-      im.onerror = function () {
-        var ph = document.createElement('div');
-        ph.className = 'story-img-ph'; ph.textContent = (p.type === 'service' ? '☸' : '◎');
-        im.replaceWith(ph);
-      };
-    });
-    storyEl.style.display = '';
-    return true;
-  }
-  fetch('articles/' + encodeURIComponent(p.id) + '.html')
-    .then(function (r) {
-      if (r.ok) return r.text();
-      // 沒有獨立檔案 → 回退到 products-full.js
-      var full = (window.ISAYA_FULL && window.ISAYA_FULL[p.id]) || [];
-      if (!full.length) throw new Error('no content');
-      var html = '<div class="detail-story">' +
-        full.map(function (b) {
-          var h = b.img ? '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" loading="lazy" alt=""></div>' : '';
-          return '<div class="story-block">' + h + (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div>';
-        }).join('') + '</div>';
-      return html;
-    })
-    .then(renderStoryHTML)
-    .catch(function () { /* 兩者皆無：不顯示長文 */ });
+  // 一頁式圖文長文：改由 DOMContentLoaded 內的 loadStory() 獨立載入，
+  // 不再等待商品清單（避免被 GAS 5 秒逾時拖慢）；內容來源仍是
+  // 直覺修改入口 website/articles/{品項ID}.html，抓不到才回退 js/products-full.js。
 
   // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：檔案缺失 → 舊圖 → 占位符）
   var imgWrap = document.getElementById('detailImg');
