@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return (pp && pp.type === 'service') ? '☸' : '◎';
     }
     function bindImg(im) {
+      // 內文圖與上方圖廊同檔（多為快取命中），改 eager 避免 lazy 造成「圖好像不見了」的錯覺
+      im.loading = 'eager';
       im.onerror = function () {
         var ph = document.createElement('div');
         ph.className = 'story-img-ph'; ph.textContent = sym();
