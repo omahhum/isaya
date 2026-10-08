@@ -14,7 +14,7 @@
   el.outerHTML =
 `<footer class="footer">
   <div class="footer__brand">
-    <img class="footer__logo" src="images/logo/isaya-logo.png" alt="光圻靈的伊夏亞 Light Wish Soul" width="1093" height="1104">
+    <img class="footer__logo" src="https://lh3.googleusercontent.com/d/1sCxwqDI0VVj3Jun0yB2WQ-gIxMIruWyJ=w2000" alt="光圻靈的伊夏亞 Light Wish Soul" width="1093" height="1104">
     <p class="footer__tag">「相信靈魂連結，遇見真正的自己。」</p>
     <div class="footer__social">
       <a class="footer__social-link" href="${IG}" target="_blank" rel="noopener">Instagram</a>

@@ -45,8 +45,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'holofilm', label: '加貼大藏經光柵膜（=960元）', surcharge: 600 }
     ],
     stock: true, on_sale: true,
-    img: "images/products/caibao-card.jpg",
-    imgs: ["images/products/caibao-card.jpg"],
+    img: "https://lh3.googleusercontent.com/d/18qnC4J9Kdom4fwg_JM2Oc9CrTOdkDzbW=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/18qnC4J9Kdom4fwg_JM2Oc9CrTOdkDzbW=w2000"],
     blurb: '全球獨一無二的財寶天王字曼陀羅開運招財朱印，当日修法祈請降臨加持，蓋上甘露王菩薩及聖曼陀羅朱印。',
     detail: [
       '與大家結緣無比殊勝、全球獨一無二的財寶天王字曼陀羅開運招財朱印。',
@@ -70,8 +70,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'holofilm', label: '加貼大藏經光柵膜', surcharge: 500 }
     ],
     stock: true, on_sale: true,
-    img: "images/products/gulugue-thangka.jpg",
-    imgs: ["images/products/gulugue-thangka.jpg","images/products/gulugue-thangka_01.png","images/products/gulugue-thangka_03.jpg","images/products/gulugue-thangka_04.jpg","images/products/gulugue-thangka_05.jpg"],
+    img: "https://lh3.googleusercontent.com/d/1SgxjF-lna_5vCJEiuL6HQJAXwJaFOjs5=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/1SgxjF-lna_5vCJEiuL6HQJAXwJaFOjs5=w2000","https://lh3.googleusercontent.com/d/133bjdj_zw7MoBv-1lHGrVdDGp-vmFg-V=w2000","https://lh3.googleusercontent.com/d/1EXERmvtgyiUqte6ShOlKdyNsmw7l_RZt=w2000","https://lh3.googleusercontent.com/d/1yrcwwK6OJI78bmKAaJeVLQ8A8y0_JK6U=w2000","https://lh3.googleusercontent.com/d/1i5mayEiulzKVkWgZ4ITrjFJxbpdcw1Kp=w2000"],
     blurb: '作明佛母（咕嚕咕咧佛母），懷愛法中最強大的兩大本尊之一。正面亮銀面閃卡材質，聖輪宗特別繪製。',
     detail: [
       '作明佛母，藏傳佛教又稱為咕嚕咕咧佛母，漢地佛經記載的名稱是酤羅菩薩，是懷愛法中最強大的兩大本尊之一（另一為愛染明王）。',
@@ -96,8 +96,8 @@ window.ISAYA.PRODUCTS = [
       { id: 't108', label: '108 座大藏經光柵膜佛塔', surcharge: 32400 }
     ],
     stock: '現貨依備品，不足時排隊趕製', on_sale: true,
-    img: "images/products/umbrella.jpg",
-    imgs: ["images/products/umbrella.jpg","images/products/umbrella_02.png","images/products/umbrella_03.png","images/products/umbrella_04.jpg"],
+    img: "https://lh3.googleusercontent.com/d/1CZloUlgBhM4m-px2-_rUviwFJvBzL9Qd=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/1CZloUlgBhM4m-px2-_rUviwFJvBzL9Qd=w2000","https://lh3.googleusercontent.com/d/1Se31Cl3mJyEbqatFN6thgZoymX-WlkBq=w2000","https://lh3.googleusercontent.com/d/1oKmBcbZHXX2X4gC3EiKNh2S747p5ajCI=w2000","https://lh3.googleusercontent.com/d/19nVhNszqK5oew9cvGL6ekpzJlqUnWfeI=w2000"],
     blurb: '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」，考慮良久並親身實驗近一年後才決定的強效辟邪護身方便法門。',
     detail: [
       '「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」是我們考慮良久、並親身實驗將近一年之後，才決定跟同修們分享的超級法寶。',
@@ -124,8 +124,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '標準', surcharge: 0 }
     ],
     stock: '尚有庫存（限量）', on_sale: true,
-    img: "images/products/mirror-mandala.jpg",
-    imgs: ["images/products/mirror-mandala.jpg","images/products/mirror-mandala_02.jpg","images/products/mirror-mandala_03.jpg","images/products/mirror-mandala_04.jpg","images/products/mirror-mandala_05.jpg","images/products/mirror-mandala_06.jpg","images/products/mirror-mandala_07.jpg","images/products/mirror-mandala_08.jpg","images/products/mirror-mandala_09.png","images/products/mirror-mandala_10.png","images/products/mirror-mandala_11.png","images/products/mirror-mandala_12.jpg","images/products/mirror-mandala_13.jpg","images/products/mirror-mandala_14.jpg","images/products/mirror-mandala_15.jpg","images/products/mirror-mandala_16.jpg"],
+    img: "https://lh3.googleusercontent.com/d/1OtFSCxHyQ1VZ5IjDWgfdTqVDun84c7WD=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/1OtFSCxHyQ1VZ5IjDWgfdTqVDun84c7WD=w2000","https://lh3.googleusercontent.com/d/12sXyHycMio0W2zNKXaG7huxikCAI2KdS=w2000","https://lh3.googleusercontent.com/d/1fMOhZSmB-wkug7iefd7Gz5K9XazO0Yr9=w2000","https://lh3.googleusercontent.com/d/1yrQg6aEfgp5UwbQ9XebJU437Wafh330A=w2000","https://lh3.googleusercontent.com/d/1gaIgDdm9lY5zvl3AMVh0ZcAexpCX5Vp9=w2000","https://lh3.googleusercontent.com/d/1fsCpzeA9DOMUhN1yPdANjBrnEf6VfOUI=w2000","https://lh3.googleusercontent.com/d/1UB8333X7Xdwzjh1gHK463Er2YegEWl7m=w2000","https://lh3.googleusercontent.com/d/1d8BOWNdNu9-GYwz-K7eabdQSI6lVpjbO=w2000","https://lh3.googleusercontent.com/d/1WeGvhhZabrB9v_vl5_v8toszxOvyu7bz=w2000","https://lh3.googleusercontent.com/d/1h0VeJo7hGUQljQdHu2IqB4b-mMU42721=w2000","https://lh3.googleusercontent.com/d/1GmPHKkUyxmgv2ehaG8p9OhBjcPD5qJaq=w2000","https://lh3.googleusercontent.com/d/136jLMDGzll4Pze2bMJrbCWjb0uDWulh8=w2000","https://lh3.googleusercontent.com/d/1Y1ujj4GVuTxGpiDkxP2QhzNbKhsMIHXJ=w2000","https://lh3.googleusercontent.com/d/1I7F1MFSnpxIwEPalpSDUNrtW-VhKCsM0=w2000","https://lh3.googleusercontent.com/d/1bPqp95wfrlLImtV2M1RRPmiP1VNYptvw=w2000","https://lh3.googleusercontent.com/d/1y4DKk6AyeBR5k-Jx5vDIQCd5IlIwrqwx=w2000"],
     blurb: '順心自在、隨求滿願的神聖曼陀羅。全鋁合金雷雕上色，表層 1mm 透明保護墊，防鏽防蝕、耐曬耐熱。',
     detail: [
       '順心自在、隨求滿願的神聖曼陀羅。',
@@ -153,17 +153,17 @@ window.ISAYA.PRODUCTS = [
       { id: 'no7', label: 'No.7 絲絹水波紋・龍宮珍品（約15.7g）', surcharge: 4200 }
     ],
     stock: '每件為斷代珍藏，售出即止', on_sale: true,
-    img: "images/products/relic.jpg",
-    imgs: ["images/products/relic.jpg","images/products/relic-no1.jpg","images/products/relic-no2.jpg","images/products/relic-no3.jpg","images/products/relic-no4.jpg","images/products/relic-no5.jpg","images/products/relic-no6.jpg","images/products/relic-no7.jpg"],
+    img: "https://lh3.googleusercontent.com/d/15ZSxT5N4HtgcR0yxQpyD1UtIPmyX9Tld=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/15ZSxT5N4HtgcR0yxQpyD1UtIPmyX9Tld=w2000","https://lh3.googleusercontent.com/d/1o2uL44qLv088h4a4LjH7L1dYoXokWUlS=w2000","https://lh3.googleusercontent.com/d/1qUA_bRbB9LOSt4B2vjUNwjUy-H24HpYD=w2000","https://lh3.googleusercontent.com/d/1DzqTOic4-_capiel83UULonCeBr36xyb=w2000","https://lh3.googleusercontent.com/d/1AUOERQGGYJdTzIlrQZMCBJPBBguG256u=w2000","https://lh3.googleusercontent.com/d/1hEU_Y07vCrfYpy24da60ljlqqAPw3cei=w2000","https://lh3.googleusercontent.com/d/1ZWG542xI4Erd1PPdNfZI6Jdp2X6QmtlD=w2000","https://lh3.googleusercontent.com/d/17lLnVtai_BZNoxUvQ39fwB2m2eFnFW16=w2000"],
     // 選到某編號時，主圖與圖廊切換到該顆舍利（圖＋細節圖）
     optionImgs: {
-      no1: ["images/products/relic-no1.jpg","images/products/relic-no1-detail.jpg"],
-      no2: ["images/products/relic-no2.jpg","images/products/relic-no2-detail.jpg"],
-      no3: ["images/products/relic-no3.jpg","images/products/relic-no3-detail.jpg"],
-      no4: ["images/products/relic-no4.jpg","images/products/relic-no4-detail.jpg"],
-      no5: ["images/products/relic-no5.jpg","images/products/relic-no5-detail.jpg"],
-      no6: ["images/products/relic-no6.jpg","images/products/relic-no6-detail.jpg"],
-      no7: ["images/products/relic-no7.jpg","images/products/relic-no7-detail.jpg"]
+      no1: ["https://lh3.googleusercontent.com/d/1o2uL44qLv088h4a4LjH7L1dYoXokWUlS=w2000","https://lh3.googleusercontent.com/d/1BTVA0oFk2IxWKMmqMswFBEqSzLxO25t7=w2000"],
+      no2: ["https://lh3.googleusercontent.com/d/1qUA_bRbB9LOSt4B2vjUNwjUy-H24HpYD=w2000","https://lh3.googleusercontent.com/d/1npQkloxFj9lrP3Rw54eKPzIjJdkF6jXP=w2000"],
+      no3: ["https://lh3.googleusercontent.com/d/1DzqTOic4-_capiel83UULonCeBr36xyb=w2000","https://lh3.googleusercontent.com/d/14odu1o6bLC1bikZkG3jbsxSbcuBLJA3Q=w2000"],
+      no4: ["https://lh3.googleusercontent.com/d/1AUOERQGGYJdTzIlrQZMCBJPBBguG256u=w2000","https://lh3.googleusercontent.com/d/13IVH9rstPLysHPAM7A_25BhS4VxOm0ua=w2000"],
+      no5: ["https://lh3.googleusercontent.com/d/1hEU_Y07vCrfYpy24da60ljlqqAPw3cei=w2000","https://lh3.googleusercontent.com/d/1ey_6FVeLiEH9NMEEIoH9q_uzKnSAifjT=w2000"],
+      no6: ["https://lh3.googleusercontent.com/d/1ZWG542xI4Erd1PPdNfZI6Jdp2X6QmtlD=w2000","https://lh3.googleusercontent.com/d/1V-nHnKQOFxvfdF2ecj9jnqrjYULZDq0q=w2000"],
+      no7: ["https://lh3.googleusercontent.com/d/17lLnVtai_BZNoxUvQ39fwB2m2eFnFW16=w2000","https://lh3.googleusercontent.com/d/1rvKtzeDkfgasbCUUUcHkDCE6K2reU-Jk=w2000"]
     },
     blurb: '收藏超過二十年、完全沒有配戴過的珍品龍宮舍利，僅收藏保養，為共修中心壇城改建而釋出。',
     detail: [
@@ -225,8 +225,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '每顆 200 元', surcharge: 0 }
     ],
     stock: true, on_sale: true,
-    img: "images/services/candle-light.jpg",
-    imgs: ["images/services/candle-light.jpg"],
+    img: "https://lh3.googleusercontent.com/d/1gKdG7_pxjQM9rHcQL_qIwkxa8VafYYnf=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/1gKdG7_pxjQM9rHcQL_qIwkxa8VafYYnf=w2000"],
     blurb: '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈功德迴向給你所想祈求的事項。',
     detail: [
       '在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈的功德迴向給你所想祈求的事項。',
@@ -244,8 +244,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '一盤 350 元', surcharge: 0 }
     ],
     stock: '每日同時僅 5 個名額', on_sale: true,
-    img: "images/services/incense-seal.jpg",
-    imgs: ["images/services/incense-seal.jpg","images/services/incense-seal_01.jpg","images/services/incense-seal_02.jpg"],
+    img: "https://lh3.googleusercontent.com/d/168oJLDoJ6gY14lKGxw43wSHM7EALveY3=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/168oJLDoJ6gY14lKGxw43wSHM7EALveY3=w2000","https://lh3.googleusercontent.com/d/1Lt2DmyYBBf8YAw-6R78iyiTq6L81ksLp=w2000","https://lh3.googleusercontent.com/d/1JtAQNGKiQMa89-ZHFCm3mG_9Ck0ZMUAM=w2000"],
     blurb: '觀自在菩薩大悲智印周遍法界利益眾生薰真如法（又名觀自在妙香印法），一盤大悲拔苦熏香。',
     detail: [
       '大悲拔苦熏香代點服務，一盤結緣價 350 元，每日同時只開放 5 個名額（香爐暫時只有 5 座）。',
@@ -263,8 +263,8 @@ window.ISAYA.PRODUCTS = [
       { id: 'base', label: '包月', surcharge: 0 }
     ],
     stock: '不限名額', on_sale: true,
-    img: "images/services/personal-practice.jpg",
-    imgs: ["images/services/personal-practice.jpg","images/services/personal-practice_01.jpg","images/services/personal-practice_02.jpg","images/services/personal-practice_03.jpg","images/services/personal-practice_04.jpg","images/services/personal-practice_05.png","images/services/personal-practice_06.jpg","images/services/personal-practice_07.jpg","images/services/personal-practice_08.png","images/services/personal-practice_09.jpg","images/services/personal-practice_10.jpg","images/services/personal-practice_11.jpg","images/services/personal-practice_12.png","images/services/personal-practice_13.jpg","images/services/personal-practice_14.png","images/services/personal-practice_15.jpg","images/services/personal-practice_16.jpg","images/services/personal-practice_17.jpg","images/services/personal-practice_18.jpg","images/services/personal-practice_19.jpg","images/services/personal-practice_20.jpg","images/services/personal-practice_21.jpg","images/services/personal-practice_22.jpg","images/services/personal-practice_23.jpg","images/services/personal-practice_24.png"],
+    img: "https://lh3.googleusercontent.com/d/1RewOxnvyNeXPcD18fLTyvkpZKD8dOKqc=w2000",
+    imgs: ["https://lh3.googleusercontent.com/d/1RewOxnvyNeXPcD18fLTyvkpZKD8dOKqc=w2000","https://lh3.googleusercontent.com/d/1VOBDTL-BOWYUpkg3_tujz30JyV3ezgsQ=w2000","https://lh3.googleusercontent.com/d/1Cj2q92AfkDBXTsIhdgGE84vdrrebNBfu=w2000","https://lh3.googleusercontent.com/d/1yQUivkqBNo35w2E7sFAd9x4I66JbW7vb=w2000","https://lh3.googleusercontent.com/d/1xVlP4atMck0-RunlE14odrRnGVcMOzW8=w2000","https://lh3.googleusercontent.com/d/1oat6G-MijQXFHgKcQQo6JS2dH9lEonBB=w2000","https://lh3.googleusercontent.com/d/1VGBQ73kE0BwhzKDgvxPwlbE3sdMEcZpx=w2000","https://lh3.googleusercontent.com/d/1MbPLuj-8YrJ3Q61i-Rm9iOBfRI1L2bf-=w2000","https://lh3.googleusercontent.com/d/1RT11noqZF4LYiK7YklKcQekvt04zRjHt=w2000","https://lh3.googleusercontent.com/d/1eiT2eIxJ2aIGU65idKUFIzl4Cgbq9tPf=w2000","https://lh3.googleusercontent.com/d/13dMQJ_ZkGtVhiThX9wS2ngJzXvKvlNhm=w2000","https://lh3.googleusercontent.com/d/1GbU_koYMlAni3ZX5DJbC3ZlGFsAu-zoz=w2000","https://lh3.googleusercontent.com/d/14EWiRu7KHtoI9Rxihe6ZekbEqHxS-GvD=w2000","https://lh3.googleusercontent.com/d/1y4EDm4HAmEQGYbRB8xeb2-9rUdFOMQyD=w2000","https://lh3.googleusercontent.com/d/1lIUtInKw0eloDKtCuNlms1Sy49Q6S4Is=w2000","https://lh3.googleusercontent.com/d/13Jiu5Fbq4tZGutRd44S3z68H2tOWoJws=w2000","https://lh3.googleusercontent.com/d/1gROkzQs-_i2NOEUrm9NNHDU0868haarr=w2000","https://lh3.googleusercontent.com/d/1s18iEuqJrxiQZ0h0Re1go3yEFt1hNR-J=w2000","https://lh3.googleusercontent.com/d/1EP0VOXfe_XF-MmlgNJlhq7DZ_ZtgyYVy=w2000","https://lh3.googleusercontent.com/d/1JkZ30rhqbGwyOrfXDLd6dTb0KOBeBreF=w2000","https://lh3.googleusercontent.com/d/1enHuP_gHM3cRVwNXUy6DKzhY6fr0wM9s=w2000","https://lh3.googleusercontent.com/d/1jAa1IYlLn0IMty651CcRB5dZuPp_1xmx=w2000","https://lh3.googleusercontent.com/d/1cyt6XZqcm3Rafv_RXH2K-4n0JA_6jCwo=w2000","https://lh3.googleusercontent.com/d/1CMGK7pjEk7EVMhxDaWWNzYZStXF-8EFL=w2000","https://lh3.googleusercontent.com/d/1MbmSwlF-5XUVgW3M7mxdpLdHUXtHdBjy=w2000"],
     blurb: '當月份報名者集體擺供、個人單獨祈福卡，每月不同主尊、殊勝日修不同法。',
     detail: [
       '2026.04 起「個人專法」更改為法會 [包月] 贊助功德主，不限名額，並開放更多小額、隨喜的法會參贊項目，供更多想要祈福加持的同修依個人情況選擇報名。',
