@@ -99,8 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         frag.appendChild(el);
       });
       storyEl.innerHTML = '';
-      storyEl.appendChild(frag);
+      // 先顯示容器再插入：圖片若在 display:none 的容器內進 DOM，即使是 eager
+      // 也會被延後到捲進視窗才載入（實測未捲動時只載入 5/15）。順序對調即可。
       storyEl.style.display = '';
+      storyEl.appendChild(frag);
       return true;
     }
     fetch('articles/' + encodeURIComponent(id) + '.html')
