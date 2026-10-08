@@ -38,8 +38,6 @@
 
         <button class="btn-gold solid" id="detailAdd" style="margin:1rem 0;width:auto;">加入購物車</button>
         <div id="detailNote" style="color:var(--text-muted);font-size:.82rem;margin-top:.8rem;"></div>
-
-        <div class="detail-list" id="detailList"></div>
       </div>
     </div>
 
@@ -54,10 +52,10 @@
 <div id="footer-placeholder"></div>
 
 <script src="js/auth.js"></script>
-<script src="js/products.js"></script>
+<script src="js/isaya-core.js"></script>
+<script src="js/product-assets.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/api.js"></script>
-<script src="js/products-full.js"></script>
 <script src="js/top-menu.js"></script>
 <script src="js/auth-nav.js"></script>
 <script src="js/footer.js"></script>
@@ -65,9 +63,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   var bootId = new URLSearchParams(location.search).get('id');
   loadStory(bootId);                    // 長文獨立載入，不等商品清單
-  ISAYA_API.loadProducts().then(init);
+  ISAYA_API.loadProducts().then(function (res) { init(res); });
 
-  // 長文載入：立即 fetch articles/{id}.html（抓不到才回退 products-full.js）
+  // 長文載入：只 fetch articles/{id}.html（長文＝商品詳細介紹，已不寫價格；價格以頁面顯示為準）
   function loadStory(id) {
     var storyEl = document.getElementById('fullStory');
     if (!storyEl || !id) return;
@@ -106,45 +104,37 @@ document.addEventListener('DOMContentLoaded', () => {
       return true;
     }
     fetch('articles/' + encodeURIComponent(id) + '.html')
-      .then(function (r) {
-        if (r.ok) return r.text();
-        var full = (window.ISAYA_FULL && window.ISAYA_FULL[id]) || [];
-        if (!full.length) throw new Error('no content');
-        return '<div class="detail-story">' + full.map(function (b) {
-          var h = b.img ? '<div class="story-img-wrap"><img class="story-img" src="' + b.img + '" loading="lazy" alt=""></div>' : '';
-          return '<div class="story-block">' + h + (b.paras || []).map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div>';
-        }).join('') + '</div>';
-      })
+      .then(function (r) { if (r.ok) return r.text(); throw new Error('no article'); })
       .then(applyHTML)
-      .catch(function () { /* 兩者皆無：不顯示長文 */ });
+      .catch(function () { /* 無長文：不顯示 fullStory 區塊 */ });
   }
 
-  function init() {
+  function init(res) {
   var params = new URLSearchParams(location.search);
   var id = params.get('id');
   var p = ISAYA.getProduct(id);
   var loader = document.getElementById('pageLoader');
+  function hideLoader() { if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); } }
 
-  if (!p) {
+  if (!res || !res.ok || !p) {
+    // fail-closed：商品價格讀不到（GAS 掛／品項不存在）→ 不顯示可結帳內容、停用加購，絕不拿舊價
     document.getElementById('detailWrap').style.display = '';
     document.getElementById('detailWrap').innerHTML =
-      '<div class="cart-empty">找不到此品項。<br><br><a href="products.html" class="btn-gold" style="padding:.6rem 2rem;">回結緣品總覽</a></div>';
-    if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
+      '<div class="cart-empty">' +
+      (p ? '商品資料暫無法載入，此品項暫時無法加購。<br><br>' : '找不到此品項。<br><br>') +
+      '<a href="products.html" class="btn-gold" style="padding:.6rem 2rem;">回結緣品總覽</a></div>';
+    hideLoader();
     return;
   }
 
-  // 載入完成：隱藏動畫、顯示主體
-  if (loader) {
-    loader.classList.add('done');
-    setTimeout(function () { loader.style.display = 'none'; }, 400);
-  }
+  // 載入成功：隱藏動畫、顯示主體
+  hideLoader();
   document.getElementById('detailWrap').style.display = '';
 
-  // 一頁式圖文長文：改由 DOMContentLoaded 內的 loadStory() 獨立載入，
-  // 不再等待商品清單（避免被 GAS 5 秒逾時拖慢）；內容來源仍是
-  // 直覺修改入口 website/articles/{品項ID}.html，抓不到才回退 js/products-full.js。
+  // 一頁式圖文長文：由 DOMContentLoaded 內的 loadStory() 獨立載入 articles/{id}.html，
+  // 不等商品清單（避免被 GAS 逾時拖慢）。長文＝商品詳細介紹（不寫價格）；價格一律以頁面顯示為準。
 
-  // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：檔案缺失 → 舊圖 → 占位符）
+  // 圖片：主圖＋縮圖圖廊（走 api.js 候選回退：舍利編號圖 → 品項 img → 本機主圖 → 占位符）
   var imgWrap = document.getElementById('detailImg');
   imgWrap.innerHTML =
     '<img class="detail-img" id="detailImgEl" src="" alt="' + p.name + '">' +
@@ -258,15 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
   var qtyEl = document.getElementById('detailQty');
   if (qtyEl) qtyEl.oninput = updateTotal;
   updateTotal();
-
-  // 介紹：段落式整頁行銷文（detail 每項獨立一段）
-  var listEl = document.getElementById('detailList');
-  listEl.className = 'detail-intro';
-  listEl.innerHTML = (p.detail || []).map(function (d) {
-    if (!d) return '';
-    return '<p class="detail-para">' + d + '</p>';
-  }).join('');
-  if (!(p.detail || []).length) listEl.style.display = 'none';
 
   // 加入購物車
   document.getElementById('detailAdd').onclick = function () {

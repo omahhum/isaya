@@ -2,15 +2,15 @@
  * isaya 官網 — Light Wish Soul 精品靈性品牌 Header
  * 對 #top-nav 注入導覽列。auth 動態項（Gmail 登入／我的訂單／登出）
  * 由 auth-nav.js 依登入狀態追加到 #navLinks；購物車角標 #cartBadge 由 cart.js 更新。
- * LINE / Instagram / 聯絡我 的真實連結請填入 products.js 的 ISAYA.LINKS
- * （.line / .instagram / .contact），缺時以 # 佔位、不壞功能。
+ * 部落格 / 聯絡我 的真實連結請填入 isaya-core.js 的 ISAYA.LINKS
+ * （.blog / .contact），缺時以 # 佔位、不壞功能。
  */
 
 const NAV_ITEMS = [
   { href: 'index.html',  label: '首頁' },
   { href: 'about.html',  label: '關於我' },
-  { href: 'services.html', label: '療癒服務' },
-  { href: 'products.html', label: '商品選物' },
+  { href: 'services.html', label: '祈福服務' },
+  { href: 'products.html', label: '結緣品' },
   { href: '__blog',      label: '部落格' },
   { href: '__contact',   label: '聯絡我' },
 ];
@@ -33,12 +33,6 @@ function renderTopNav() {
     return `<li><a href="${item.href}">${item.label}</a></li>`;
   }).join('\n        ');
 
-  const line = L.line || '#';
-  const ig   = L.instagram || '#';
-  const fb   = L.fb || '#';
-  const social = (href, label) =>
-    `<a class="nav-social__link" href="${href}"${href === '#' ? '' : ' target="_blank" rel="noopener"'} title="${label}">${label}</a>`;
-
   navEl.innerHTML =
 `<nav class="nav">
   <div class="nav-inner">
@@ -53,14 +47,9 @@ function renderTopNav() {
     <div class="nav-drop">
       <ul class="nav-links" id="navLinks">
           ${items}
-          <li><a href="cart.html" class="nav-cart" aria-label="選物清單">選物<span id="cartBadge" class="cart-badge" style="display:none">0</span></a></li>
+          <li><a href="cart.html" class="nav-cart" aria-label="購物車">購物車<span id="cartBadge" class="cart-badge" style="display:none">0</span></a></li>
       </ul>
       <div class="nav-tools">
-        <div class="nav-social">
-          ${social(line, 'LINE')}
-          ${social(ig, 'Instagram')}
-          ${social(fb, 'Facebook')}
-        </div>
         <a class="nav-cta" href="services.html">預約諮詢</a>
       </div>
     </div>

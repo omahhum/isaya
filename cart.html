@@ -26,7 +26,8 @@
 <div id="footer-placeholder"></div>
 
 <script src="js/auth.js"></script>
-<script src="js/products.js"></script>
+<script src="js/isaya-core.js"></script>
+<script src="js/product-assets.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/api.js"></script>
 <script src="js/top-menu.js"></script>
@@ -35,9 +36,13 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   var body = document.getElementById('cartBody');
-  ISAYA_API.loadProducts().then(function () { render(); });
+  ISAYA_API.loadProducts().then(function (res) { render(res); });
 
-  function render() {
+  function render(res) {
+    if (!res || !res.ok) { // fail-closed：商品價格讀不到 → 不計價、不讓結帳
+      body.innerHTML = (window.isayaFailMsg ? isayaFailMsg('購物車暫無法結帳：商品價格暫時讀不到，請稍後再試。') : '');
+      return;
+    }
     var d = ISAYACart.detail();
     if (!d.lines.length) {
       body.innerHTML = '<div class="cart-empty">購物車是空的。<br><br>' +

@@ -712,6 +712,17 @@ img { max-width: 100%; display: block; }
 .about-certs__item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
 .about-certs__item img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
 
+/* 關於我：頁面主視覺圖（沿用證書的細金框語言） */
+.about-photo { margin: 2.8rem auto 0; max-width: 560px; }
+.about-photo a {
+  display: block; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--color-gold-line);
+  box-shadow: var(--shadow-soft); background: var(--surface-card-2);
+  transition: transform .5s cubic-bezier(.22,.61,.36,1), box-shadow .5s cubic-bezier(.22,.61,.36,1);
+}
+.about-photo a:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.about-photo img { width: 100%; height: auto; display: block; }
+
 /* --- ⑤ 風格標籤 --- */
 .tag-list {
   list-style: none; margin: 0; padding: 0;

@@ -1,46 +1,15 @@
 /**
  * isaya 官網 — GAS 後端封裝（商品清單 / 訂單）
- * 商品：本機 products.js 為底；loadProducts() 會拉後端清單合併進去（改價/庫存不用改網站）。
- * 圖片規則見「圖片規則.md」：img 欄填相對路徑，檔案缺失時自動回退舊圖→占位符，絕不破圖。
+ * ★ 單一來源：商品 price / stock / options / on_sale / blurb / img 一律來自 Google Sheet（經 GAS）。
+ *   本檔「不再」有任何本機商品備胎；GAS 讀取失敗或逾時 → ISAYA.PRODUCTS_READY=false，
+ *   各錢頁應停用加購／結帳（fail-closed），絕不拿舊價硬撐。
+ * 圖片：ISAYA_IMAGES（js/product-assets.js）提供圖廊／舍利換圖；toDrive 把本機相對路徑映射到 Drive 直連。
  */
 (function () {
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_aYUGaSQV6u1QnkG4KuK_Wlisjj4vDpUxwq-JrglmDg8RZaq807IPsEn0QIjzZhQ/exec';
 
-  var localImg = {};
   var loaded = null; // 同頁只 fetch 一次
 
-  // 記錄本機舊圖（5 個品項有 lh3 網址），供後端 img 檔案缺失時回退
-  function snapshotLocalImgs() {
-    localImg = {};
-    (window.ISAYA.PRODUCTS || []).forEach(function (p) { localImg[p.id] = p.img || ''; });
-  }
-  snapshotLocalImgs();
-
-  function mergeIntoLocal(remote) {
-    var local = window.ISAYA.PRODUCTS;
-    remote.forEach(function (rp) {
-      if (!rp.id) return;
-      var ex = null;
-      for (var i = 0; i < local.length; i++) if (local[i].id === rp.id) ex = local[i];
-      var isNew = !ex;
-      if (isNew) {
-        ex = { id: rp.id, name: rp.name || rp.id, type: rp.type || 'product',
-               options: [{ id: 'base', label: '標準', surcharge: 0 }] };
-        local.push(ex);
-      }
-      // 價格／庫存／選項以試算表為準（改價、改庫存不用改網站）；
-      // 行銷文案 blurb / detail / imgs 以官網為準（試算表只有一行，不能蓋掉整頁介紹）。
-      ['name', 'type', 'price', 'consult', 'group_order', 'multi_qty',
-       'price_note', 'options', 'stock', 'on_sale'].forEach(function (k) {
-        if (rp[k] !== undefined && rp[k] !== '') ex[k] = rp[k];
-      });
-      if (rp.img) ex.img = toDrive(rp.img);      // 主圖可試算表指定；圖廊/文案仍為本機
-      ex.imgFb = localImg[ex.id] || '';  // 本機舊圖 fallback
-    });
-  }
-
-  // 後端（試算表）img 欄若填「本機相對路徑」，改用對應的 Google Drive 直連。
-  // Drive 資料夾結構與 website/images/ 完全相同（about/…/services/），對應表如下。
   var DRIVE_BY_LOCAL = {
     'images/about/cert1.jpg': 'https://lh3.googleusercontent.com/d/1WSPv3bSPAD3ZEdj3D_pLcLSGYoWqHsiy=w2000',
     'images/about/cert2.jpg': 'https://lh3.googleusercontent.com/d/12KZJYtY410lELOfWWHdvDQBg531xD8cj=w2000',
@@ -156,10 +125,10 @@
     return (src && DRIVE_BY_LOCAL[src]) ? DRIVE_BY_LOCAL[src] : src;
   }
 
-  // 圖片候選順序：relic 選 no1~no7 → 專屬圖 → 品項 img（後端）→ 本機舊圖 imgFb
+  // 圖片候選順序：relic 依 option → 專屬舍利圖 → 品項 img（GAS）→ 本機主圖 imgFb → 占位
   function candidates(p, optionId) {
     var c = [];
-    if (p && p.id === 'relic' && optionId && /^no\d+$/.test(optionId)) c.push(toDrive('images/products/relic-' + optionId + '.jpg'));
+    if (p && p.id === "relic" && optionId && /^nod+$/.test(optionId)) c.push(toDrive("images/products/relic-" + optionId + ".jpg"));
     if (p && p.img) c.push(toDrive(p.img));
     if (p && p.imgFb && p.imgFb !== p.img) c.push(toDrive(p.imgFb));
     return c;
@@ -167,58 +136,68 @@
 
   /**
    * 綁定圖片：<img> 與占位 <div> 成對使用（依序排，同一時間只顯示一個）。
-   * 圖檔不存在 → 依候選順序 fallback，全無則顯示占位符 ◎/☸，絕不破圖。
-   * rebind（選項變更）會重試所有候選。
+   * 圖檔不存在 → 依候選 fallback，全無則顯示占位符 ◎/☸，絕不破圖。
    */
   function bindPair(imgEl, phEl, p, optionId) {
     if (!imgEl) return;
-    imgEl.dataset.tried = '';
+    imgEl.dataset.tried = "";
     (function apply() {
-      var tried = imgEl.dataset.tried ? imgEl.dataset.tried.split('|') : [];
+      var tried = imgEl.dataset.tried ? imgEl.dataset.tried.split("|") : [];
       var cands = candidates(p, optionId);
-      var src = '';
+      var src = "";
       for (var i = 0; i < cands.length; i++) if (tried.indexOf(cands[i]) === -1) { src = cands[i]; break; }
       if (!src) {
-        imgEl.style.display = 'none';
-        if (phEl) { phEl.textContent = p.type === 'service' ? '☸' : '◎'; phEl.style.display = ''; }
+        imgEl.style.display = "none";
+        if (phEl) { phEl.textContent = p.type === "service" ? "☸" : "◎"; phEl.style.display = ""; }
         return;
       }
-      if (phEl) phEl.style.display = 'none';
-      imgEl.style.display = '';
-      imgEl.onerror = function () { tried.push(src); imgEl.dataset.tried = tried.join('|'); apply(); };
+      if (phEl) phEl.style.display = "none";
+      imgEl.style.display = "";
+      imgEl.onerror = function () { tried.push(src); imgEl.dataset.tried = tried.join("|"); apply(); };
       imgEl.src = src;
     })();
   }
 
+  // 把本機圖片資產（圖廊／舍利換圖）附加到 GAS 商品上；imgFb 當主圖備援
+  function applyImages(products) {
+    var imgs = window.ISAYA_IMAGES || {};
+    (products || []).forEach(function (p) {
+      var a = imgs[p.id];
+      if (a) {
+        if (a.imgs) p.imgs = a.imgs;
+        if (a.optionImgs) p.optionImgs = a.optionImgs;
+        if (a.img) p.imgFb = a.img;
+      }
+      if (p.img) p.img = toDrive(p.img);   // 本機相對路徑 → Drive 直連；lh3 URL 原樣放行
+    });
+  }
+
   window.ISAYA_API = {
     url: APPS_SCRIPT_URL,
-    // 載入並合併後端商品；失敗 → 保留本機。回傳 {source:'remote'|'local', products}
+    // 載入：只信任 GAS。成功 → 填 ISAYA.PRODUCTS（含圖片資產）、READY=true。
+    // 失敗／逾時／空 → READY=false、PRODUCTS=[]，回 {ok:false}。無本機備胎。
     loadProducts: function () {
       if (loaded) return loaded;
       var settled = false;
-      var settleShim = null;   // resolve 只在 executor 內有效，需先提出來給 resolveLocal 用
-      function resolveLocal() {
-        if (settled) return; settled = true;
-        if (settleShim) settleShim({ source: 'local', products: window.ISAYA.PRODUCTS });
-      }
       loaded = new Promise(function (resolve) {
-        settleShim = resolve;
-        var timer = setTimeout(resolveLocal, 5000); // GAS 太慢 → 先用本機顯示，載入動畫不卡死
-        fetch(APPS_SCRIPT_URL + '?action=getProducts')
+        function finish(ok, products) {
+          if (settled) return; settled = true;
+          window.ISAYA.PRODUCTS = (ok && products) ? products : [];
+          window.ISAYA.PRODUCTS_READY = !!ok && (products ? products.length : 0) > 0;
+          if (window.ISAYA.PRODUCTS_READY) applyImages(window.ISAYA.PRODUCTS);
+          resolve({ ok: window.ISAYA.PRODUCTS_READY, source: window.ISAYA.PRODUCTS_READY ? "remote" : "none", products: window.ISAYA.PRODUCTS });
+        }
+        var timer = setTimeout(function () { finish(false, []); }, 5000); // GAS 太慢 → 視為載入失敗（fail-closed）
+        fetch(APPS_SCRIPT_URL + "?action=getProducts")
           .then(function (r) { return r.text(); })
           .then(function (text) {
             clearTimeout(timer);
             var data = null;
             try { data = JSON.parse(text); } catch (e) {}
-            if (data && Array.isArray(data.products) && data.products.length) {
-              mergeIntoLocal(data.products);
-              settled = true;
-              resolve({ source: 'remote', products: window.ISAYA.PRODUCTS });
-            } else {
-              resolveLocal();
-            }
+            if (data && Array.isArray(data.products) && data.products.length) finish(true, data.products);
+            else finish(false, []);
           })
-          .catch(function () { clearTimeout(timer); resolveLocal(); });
+          .catch(function () { clearTimeout(timer); finish(false, []); });
       });
       return loaded;
     },
