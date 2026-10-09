@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
         : '<span>1</span>';
       var totalHTML = l.consult
         ? '<span class="tag-consult">洽詢</span>'
-        : '<span style="color:var(--gold);">NT$' + l.lineTotal + '</span>';
+        : '<span style="color:var(--color-gold-text);">NT$' + l.lineTotal + '</span>';
       var flags = (l.group_order ? '<span class="product-note" style="display:block;">成團後通知付款</span>' : '');
       return '<tr>' +
-        '<td><strong style="color:var(--gold-soft);">' + l.name + '</strong>' +
+        '<td><strong style="color:var(--color-heading);">' + l.name + '</strong>' +
           (l.optLabel ? '<div class="product-note">' + l.optLabel + '</div>' : '') + flags + '</td>' +
         '<td class="num">' + qtyHTML + '</td>' +
         '<td class="num">' + totalHTML + '</td>' +
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
 
     var freeHint = d.goods >= ISAYA.SHIPPING.freeThreshold
-      ? '<span style="color:#7fd4a0;">免運</span>'
+      ? '<span style="color:var(--color-sage-text);">免運</span>'
       : (d.goods > 0 ? 'NT$' + ISAYA.SHIPPING.base : '');
 
     body.innerHTML =

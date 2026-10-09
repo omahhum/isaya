@@ -47,7 +47,7 @@ window.ISAYA.byType = function (type) {
 // 不使用任何本機舊價備胎。
 window.isayaFailMsg = function (txt) {
   return '<div class="cart-empty" style="text-align:center;padding:2rem;">' +
-    '<div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;">◎</div>' +
+    '<div style="font-size:2rem;color:var(--color-gold-text);margin-bottom:.5rem;">◎</div>' +
     '<p style="color:var(--text-muted);line-height:1.9;max-width:420px;margin:0 auto;">' +
     (txt || '商品資料暫無法載入，請稍後再試。') + '</p>' +
     '</div>';

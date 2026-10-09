@@ -37,14 +37,14 @@
     if (user) {
       var who = user.displayName || (user.email ? user.email.split('@')[0] : '會員');
       li('auth-user',
-        '<a style="color:var(--gold);cursor:default;" title="' + (user.email || '') + '">' + who + '</a>');
+        '<a style="color:var(--color-gold-text);cursor:default;" title="' + (user.email || '') + '">' + who + '</a>');
       li('auth-logout',
         '<a href="javascript:void(0)" id="navLogout" style="color:var(--text-muted);">登出</a>');
       var lo = document.getElementById('navLogout');
       if (lo) lo.onclick = function () { firebaseAuth.signOut(); };
     } else {
       li('auth-login',
-        '<a href="javascript:void(0)" id="navLogin" style="color:var(--gold);">Gmail 登入</a>');
+        '<a href="javascript:void(0)" id="navLogin" style="color:var(--color-gold-text);">Gmail 登入</a>');
       var ln = document.getElementById('navLogin');
       if (ln) ln.onclick = function () { firebaseAuth.signInWithGoogle(); };
     }

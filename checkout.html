@@ -22,7 +22,7 @@
     <!-- 購物車空 -->
     <div id="checkoutEmpty" class="auth-gate" style="display:none;">
       購物車是空的，先
-      <a href="products.html" style="color:var(--gold);">逛逛結緣品</a>。
+      <a href="products.html" style="color:var(--color-gold-text);">逛逛結緣品</a>。
     </div>
 
     <!-- 未登入 -->
@@ -70,16 +70,16 @@
       <button id="coSubmit" class="btn-gold solid" style="width:100%;padding:.9rem;font-size:1rem;">
         送出訂單
       </button>
-      <p id="coHint" style="color:var(--text-muted);font-size:.8rem;margin:.8rem 0 0;"></p>
-      <p id="coBusy" style="color:var(--text-muted);font-size:.85rem;margin:1rem 0 0;display:none;">送單中，請勿重複點擊…</p>
+      <p id="coHint" style="color:var(--text-muted);font-size:.9rem;margin:.8rem 0 0;"></p>
+      <p id="coBusy" style="color:var(--text-muted);font-size:.95rem;margin:1rem 0 0;display:none;">送單中，請勿重複點擊…</p>
     </div>
 
     <!-- 送單成功 -->
     <div id="checkoutDone" class="form-card" style="display:none;text-align:center;padding:3rem 2rem;">
-      <div style="font-size:3rem;color:var(--gold);">✓</div>
+      <div style="font-size:3rem;color:var(--color-gold-text);">✓</div>
       <h3 style="font-size:1.3rem;margin:1rem 0 .5rem;">訂單已送出</h3>
-      <p style="color:var(--text-muted);line-height:2;">
-        訂單編號：<strong id="doneOrderNo" style="color:var(--gold-soft);"></strong><br>
+      <p style="color:var(--text-muted);">
+        訂單編號：<strong id="doneOrderNo" style="color:var(--color-gold-text);"></strong><br>
         目前為「先送單後付款」：管理端確認後會通知付款；付款完成再通知出貨。<br>
         出貨進度請到「我的訂單」查詢。
       </p>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!dataReady) {
         // fail-closed：商品價格讀不到 → 不計價、停用結帳，絕不拿本機舊價備胎
         empty.style.display = 'block';
-        empty.innerHTML = '商品資料暫無法載入，暫時無法結帳。<br><br>請稍後再試，或 <a href="products.html" style="color:var(--gold);">回結緣品總覽</a>。';
+        empty.innerHTML = '商品資料暫無法載入，暫時無法結帳。<br><br>請稍後再試，或 <a href="products.html" style="color:var(--color-gold-text);">回結緣品總覽</a>。';
         authGate.style.display = 'none';
         form.style.display = 'none';
         return;
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
       var hasItems = ISAYACart.detail().lines.length > 0;
       if (!hasItems) {
         empty.style.display = 'block';
-        empty.innerHTML = '購物車是空的，先 <a href="products.html" style="color:var(--gold);">逛逛結緣品</a>。';
+        empty.innerHTML = '購物車是空的，先 <a href="products.html" style="color:var(--color-gold-text);">逛逛結緣品</a>。';
         authGate.style.display = 'none';
         form.style.display = 'none';
         return;

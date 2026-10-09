@@ -36,7 +36,7 @@
     <!-- 無訂單 -->
     <div id="ordersEmpty" class="auth-gate" style="display:none;">
       目前尚無訂單紀錄。
-      <a href="products.html" style="color:var(--gold);">先去逛逛結緣品</a>。
+      <a href="products.html" style="color:var(--color-gold-text);">先去逛逛結緣品</a>。
     </div>
   </section>
 </div>
@@ -59,10 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
   var empty = document.getElementById('ordersEmpty');
 
   function statusBadge(st) {
-    var map = { '待付款': '#d4af37', '已付款': '#7fd4a0', '已出貨': '#8fb4ff', '已完成': '#7fd4a0' };
-    var color = map[st] || '#9aa4b8';
-    return '<span style="display:inline-block;padding:.15rem .7rem;border-radius:999px;' +
-      'border:1px solid ' + color + ';color:' + color + ';font-size:.75rem;">' + (st || '待付款') + '</span>';
+    var map = { '待付款': 'var(--color-gold-text)', '已付款': 'var(--color-sage-text)',
+                '已出貨': 'var(--color-text)', '已完成': 'var(--color-sage-text)' };
+    var color = map[st] || 'var(--color-text-2)';
+    return '<span style="display:inline-block;padding:.2rem .7rem;border-radius:999px;' +
+      'border:1px solid currentColor;color:' + color + ';font-size:.86rem;">' + (st || '待付款') + '</span>';
   }
 
   function orderCard(o) {
@@ -74,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
     return '<div class="form-card" style="margin-bottom:1.2rem;">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">' +
-        '<strong style="color:var(--gold-soft);font-size:1rem;">' + o.order_no + '</strong>' +
+        '<strong style="color:var(--color-gold-text);font-size:1rem;">' + o.order_no + '</strong>' +
         statusBadge(o.status) +
       '</div>' +
-      '<div style="color:var(--text-muted);font-size:.78rem;margin:.4rem 0 .8rem;">' + (o.created_at || '') + '</div>' +
+      '<div style="color:var(--text-muted);font-size:.9rem;margin:.4rem 0 .8rem;">' + (o.created_at || '') + '</div>' +
       '<div class="summary-box" style="margin:0;">' + lines +
         '<div class="summary-row total" style="margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--line);">' +
           '<span>合計</span><span>NT$' + (o.total || 0) + '</span></div>' +
