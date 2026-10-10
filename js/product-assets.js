@@ -137,5 +137,13 @@ window.ISAYA_IMAGES = {
       "https://lh3.googleusercontent.com/d/1CMGK7pjEk7EVMhxDaWWNzYZStXF-8EFL=w2000",
       "https://lh3.googleusercontent.com/d/1MbmSwlF-5XUVgW3M7mxdpLdHUXtHdBjy=w2000"
     ]
+  },
+  "moni-vase": {
+    "img": "https://lh3.googleusercontent.com/d/1dRQZyxymbJ0csbLoAvE4GpiTd-gYQwAy=w2000",
+    "imgs": [
+      "https://lh3.googleusercontent.com/d/1dRQZyxymbJ0csbLoAvE4GpiTd-gYQwAy=w2000",
+      "https://lh3.googleusercontent.com/d/1jmXnT9uLE36QDiFII8_4biaSExCpzYwk=w2000",
+      "https://lh3.googleusercontent.com/d/1mel3u5I4In-7RMf26uscU0jiwOoAW8f3=w2000"
+    ]
   }
 };
