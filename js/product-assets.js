@@ -139,11 +139,26 @@ window.ISAYA_IMAGES = {
     ]
   },
   "moni-vase": {
-    "img": "https://lh3.googleusercontent.com/d/1dRQZyxymbJ0csbLoAvE4GpiTd-gYQwAy=w2000",
+    "img": "https://lh3.googleusercontent.com/d/1mel3u5I4In-7RMf26uscU0jiwOoAW8f3=w2000",
     "imgs": [
+      "https://lh3.googleusercontent.com/d/1mel3u5I4In-7RMf26uscU0jiwOoAW8f3=w2000",
       "https://lh3.googleusercontent.com/d/1dRQZyxymbJ0csbLoAvE4GpiTd-gYQwAy=w2000",
-      "https://lh3.googleusercontent.com/d/1jmXnT9uLE36QDiFII8_4biaSExCpzYwk=w2000",
-      "https://lh3.googleusercontent.com/d/1mel3u5I4In-7RMf26uscU0jiwOoAW8f3=w2000"
+      "https://lh3.googleusercontent.com/d/1jmXnT9uLE36QDiFII8_4biaSExCpzYwk=w2000"
+    ]
+  },
+  "dazizai-oracle": {
+    "img": "https://lh3.googleusercontent.com/d/1mFbbffxwzPmcdhRIM6iXtVebe437Vlii=w2000",
+    "imgs": [
+      "https://lh3.googleusercontent.com/d/1mFbbffxwzPmcdhRIM6iXtVebe437Vlii=w2000",
+      "https://lh3.googleusercontent.com/d/15LG1YiP0ghXjXTckoEcid3avElCscKOq=w2000"
+    ]
+  },
+  "guanzizai-card": {
+    "img": "https://lh3.googleusercontent.com/d/1S6aBLtqLivvwx7KvTSBJS0IhA_N-xnIH=w2000",
+    "imgs": [
+      "https://lh3.googleusercontent.com/d/1S6aBLtqLivvwx7KvTSBJS0IhA_N-xnIH=w2000",
+      "https://lh3.googleusercontent.com/d/1pkIqldpioJCTJovNadv0tO_yxxodZQFp=w2000",
+      "https://lh3.googleusercontent.com/d/1g6p-X4LRi7pyajWJ8cpRvzggtHyamoFh=w2000"
     ]
   }
 };

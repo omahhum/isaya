@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (grid) { grid.style.display = ''; grid.innerHTML = (window.isayaFailMsg ? isayaFailMsg() : ''); }
       return;
     }
+    // ★ 排序＝Google Sheet「isaya_商品」的列順序（GAS 依列序回傳，前端不再排序）
+    //   要調整順序 → 直接拉動試算表的列即可，請勿在此加 sort()
     fillProductGrid(grid, ISAYA.byType('service'));
     if (grid) grid.style.display = '';
   });
