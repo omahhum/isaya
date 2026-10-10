@@ -44,8 +44,8 @@
         stock +
         '<div class="product-price-row">' + priceHTML(p) + ' ' + note + '</div>' +
         optHTML +
-        '<div class="cart-row" style="margin-top:auto;padding-top:.6rem;">' +
-          '<a href="product.html?id=' + p.id + '" style="font-size:.8rem;color:var(--text-muted);display:block;margin-bottom:.6rem;">詳細說明</a>' +
+        '<div class="cart-row">' +
+          '<a href="product.html?id=' + p.id + '">詳細說明</a>' +
           '<button class="btn-add" data-add="' + p.id + '">加入購物車</button>' +
         '</div>' +
       '</div>' +
