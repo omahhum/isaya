@@ -54,7 +54,8 @@
 <script src="js/footer.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  ISAYA_API.loadProducts().then(function (res) {
+  // 顯示層走快照（試算表列序）；慢/抓不到 → fail-closed，不加購。改試算表後跑「更新試算表快照.bat」再發佈。
+  ISAYA_API.fromSnapshot('js/sheet-cache.json').then(function (res) {
     var loader = document.getElementById('pageLoader');
     var grid = document.getElementById('serviceGrid');
     if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }

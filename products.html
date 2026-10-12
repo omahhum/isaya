@@ -51,16 +51,17 @@
 <script src="js/footer.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  ISAYA_API.loadProducts().then(function (res) {
+  // 顯示層走快照（試算表列序）；慢/抓不到 → fail-closed，不加購。改試算表後跑「更新試算表快照.bat」再發佈。
+  ISAYA_API.fromSnapshot('js/sheet-cache.json').then(function (res) {
     var loader = document.getElementById('pageLoader');
     var grid = document.getElementById('productGrid');
     if (loader) { loader.classList.add('done'); setTimeout(function () { loader.style.display = 'none'; }, 400); }
-    if (!res.ok) { // fail-closed：讀不到試算表 → 不顯示、不加購，不拿舊價備胎
+    if (!res.ok) { // fail-closed：讀不到快照 → 不顯示、不加購，不拿舊價備胎
       if (grid) { grid.style.display = ''; grid.innerHTML = (window.isayaFailMsg ? isayaFailMsg() : ''); }
       return;
     }
-    // ★ 排序＝Google Sheet「isaya_商品」的列順序（GAS 依列序回傳，前端不再排序）
-    //   要調整順序、把促銷品排前面 → 直接拉動試算表的列即可，請勿在此加 sort()
+    // ★ 排序＝Google Sheet「isaya_商品」的列順序（快照 JSON 保留 GAS 列序，前端不再排序）
+    //   要調整順序、把促銷品排前面 → 拉動試算表的列後重跑快照腳本，請勿在此加 sort()
     var list = ISAYA.byType('product');
     fillProductGrid(grid, list);
     if (grid) grid.style.display = '';

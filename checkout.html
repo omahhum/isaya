@@ -57,7 +57,17 @@
         <label>付款方式 *</label>
         <div class="pay-radio">
           <label><input type="radio" name="pay" value="銀行轉帳" checked> 銀行轉帳</label>
+          <label><input type="radio" name="pay" value="LINE PAY"> LINE PAY</label>
           <label><input type="radio" name="pay" value="蝦皮代付"> 蝦皮代付</label>
+        </div>
+      </div>
+
+      <!-- 銀行匯款帳戶（選「銀行轉帳」時顯示） -->
+      <div id="bankInfo" style="background:var(--color-cream);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem;margin:0 0 1rem;">
+        <div style="font-size:1rem;font-weight:500;margin-bottom:.5rem;">銀行匯款帳戶</div>
+        <div style="color:var(--text-muted);line-height:1.8;">
+          帳號：700-0000419200058651<br>
+          帳戶：侯鳳靈
         </div>
       </div>
       <div class="form-group">
@@ -71,6 +81,9 @@
         送出訂單
       </button>
       <p id="coHint" style="color:var(--text-muted);font-size:.9rem;margin:.8rem 0 0;"></p>
+      <p style="color:var(--text-muted);font-size:.9rem;margin:.6rem 0 0;line-height:1.7;">
+        送出後請再 <a href="https://www.facebook.com/lightwishsoul/" target="_blank" rel="noopener" style="color:var(--color-gold-text);">私訊光圻靈 FB 粉專</a> 確認訂單
+      </p>
       <p id="coBusy" style="color:var(--text-muted);font-size:.95rem;margin:1rem 0 0;display:none;">送單中，請勿重複點擊…</p>
     </div>
 
@@ -81,7 +94,8 @@
       <p style="color:var(--text-muted);">
         訂單編號：<strong id="doneOrderNo" style="color:var(--color-gold-text);"></strong><br>
         目前為「先送單後付款」：管理端確認後會通知付款；付款完成再通知出貨。<br>
-        出貨進度請到「我的訂單」查詢。
+        出貨進度請到「我的訂單」查詢。<br><br>
+        最後一步：請 <a href="https://www.facebook.com/lightwishsoul/" target="_blank" rel="noopener" style="color:var(--color-gold-text);">私訊光圻靈 FB 粉專</a> 確認訂單，管理端見私訊後即通知付款與檔期。
       </p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
         <a href="orders.html" class="btn-gold solid" style="padding:.7rem 2.4rem;">查我的訂單</a>
@@ -175,6 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (d.hasGroup) parts.push('含團印品項：成團後才通知付款。');
       hint.textContent = parts.join('');
     }
+
+    // 銀行匯款帳戶：選「銀行轉帳」時顯示；選 LINE PAY／蝦皮代付時收起來
+    var bankInfo = document.getElementById('bankInfo');
+    function toggleBank() {
+      var payEl = document.querySelector('input[name="pay"]:checked');
+      if (bankInfo) bankInfo.style.display = (payEl && payEl.value === '銀行轉帳') ? '' : 'none';
+    }
+    document.querySelectorAll('input[name="pay"]').forEach(function (r) { r.addEventListener('change', toggleBank); });
+    toggleBank();
 
     window.__onCartChanged = function () {
       if (done.style.display === 'block') return;
