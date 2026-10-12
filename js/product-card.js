@@ -45,7 +45,7 @@
         '<div class="product-price-row">' + priceHTML(p) + ' ' + note + '</div>' +
         optHTML +
         '<div class="cart-row">' +
-          '<a href="product.html?id=' + p.id + '">詳細說明</a>' +
+          '<a href="' + p.id + '/">詳細說明</a>' +
           '<button class="btn-add" data-add="' + p.id + '">加入購物車</button>' +
         '</div>' +
       '</div>' +

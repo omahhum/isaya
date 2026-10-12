@@ -1,0 +1,505 @@
+{
+  "generated_at": "2026-10-12 19:52 (UTC+8)",
+  "source": "Google Sheet isaya_商品 (via GAS, machine export)",
+  "note": "顯示用快照。加購/結帳以 GAS 即時真值為準；快照落後時顯示舊值、收真值。改試算表後重跑 update_sheet_cache.py 並發佈。",
+  "products": [
+    {
+      "id": "smoke-offering-powder",
+      "name": "大自在女神-香雲海 煙供粉",
+      "type": "product",
+      "price": 888,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "每盒（含運），附【香雲海供儀軌】電子檔",
+      "options": [
+        {
+          "id": "base",
+          "label": "每盒（含運＋儀軌電子檔）",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/products/smoke-offering.jpg",
+      "blurb": "大自在女神-香雲海 煙供粉，每盒經香海心咒迴向，附【香雲海供儀軌】電子檔。",
+      "detail": [
+        "煙供（藏傳叫煨桑、漢傳叫供香）是淨化、消除違緣、累積功德資糧的方便實用的祈福法門。",
+        "香海之名不無來由：佛經中早有香水海、香雲海，對應八供養中的燒香供養與塗香供養。",
+        "所有香粉都經過香海心咒迴向，祈請本尊加持；觀想少許煙化為無邊香雲海，雲海化現無數供品，供養諸佛菩薩及一切眾生。",
+        "隨盒附【香雲海供儀軌】電子檔，說明修法與觀想。",
+        "結緣價 888 元／盒（含運）。"
+      ]
+    },
+    {
+      "id": "moni-vase",
+      "name": "財寶天王招財摩尼寶瓶（私家珍藏）",
+      "type": "product",
+      "price": 7800,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "含運費；含當月個人專法與結緣贈品",
+      "options": [
+        {
+          "id": "base",
+          "label": "含運＋個人專法＋結緣贈品",
+          "surcharge": 0
+        }
+      ],
+      "stock": "私家珍藏，僅剩 2 座，售出即止",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1mel3u5I4In-7RMf26uscU0jiwOoAW8f3=w2000",
+      "blurb": "財寶天王招財摩尼寶瓶：裝臟金箔、銀法器、琉璃、瑪瑙、珊瑚、綠松石、甘露丸、紅花、硨磲、玉石、珍珠、七彩摩尼珠、七色元寶、舍利子與大藏經光柵膜，並為請奉者單獨修持財神法。",
+      "detail": [
+        "裝臟 15 項吉祥聖物＋大藏經光柵膜；附裝臟聖物電子檔（含供奉儀軌）。",
+        "含運費；含當月個人專法與結緣贈品（龍王開運紅包袋、招財祈福卡、聖輪大悲咒符令、財寶天王祈福疏文、大悲咒符令雷射轉印貼、功德增上億倍環保紙金）。",
+        "私家珍藏僅剩 2 座，售出即止。"
+      ]
+    },
+    {
+      "id": "dazizai-oracle",
+      "name": "大自在女神正念神諭卡（同修限量結緣）",
+      "type": "product",
+      "price": 1380,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "含運費（精美禮盒＋64 張牌卡＋心靈引導手冊）",
+      "options": [
+        {
+          "id": "base",
+          "label": "一套（含運）",
+          "surcharge": 0
+        }
+      ],
+      "stock": "限量結緣，售完為止",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1mFbbffxwzPmcdhRIM6iXtVebe437Vlii=w2000",
+      "blurb": "《光麒麟 大自在女神正念神諭卡》：64 張牌卡＋心靈引導手冊＋精美禮盒，由成嘉文化出版。",
+      "detail": [
+        "精美禮盒＋64 張牌卡＋《大自在女神心靈引導手冊》；每張牌卡背面印有「大自在女神心咒」梵文與中文譯音。",
+        "由成嘉文化出版（初版 2026 年 3 月），實體通路亦有販售；此次為出版社為同修保留的限量套數。",
+        "限量結緣，售完為止；含運費。"
+      ]
+    },
+    {
+      "id": "guanzizai-card",
+      "name": "觀自在療癒卡",
+      "type": "product",
+      "price": 1680,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "含運費；隨套附贈絨布袋",
+      "options": [
+        {
+          "id": "base",
+          "label": "一套（含運，贈絨布袋）",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1g6p-X4LRi7pyajWJ8cpRvzggtHyamoFh=w2000",
+      "blurb": "觀自在療癒卡：42 張三昧耶卡＋25 張光之療癒唐卡，是占卜牌卡也是唐卡，輔助修行的方便法門。",
+      "detail": [
+        "一次擁有 42 張觀自在菩薩三昧耶形（42 手眼）與 25 張光之療癒唐卡（25 三昧王），合計 67 張。",
+        "不只是占卜：每一張卡預示運勢吉凶與障礙來由，也是修行方向、法門、對治方法；可用來找現階段最適合修持的本尊。",
+        "解讀比塔羅容易：正位吉、逆位凶。牌意可線上查詢（星靈神念基金會研究成果）。",
+        "現貨結緣，含運費，隨套附贈絨布袋。"
+      ]
+    },
+    {
+      "id": "mirror-mandala",
+      "name": "鏡面聖曼陀羅",
+      "type": "product",
+      "price": 1680,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "限量結緣；含說明書，前 100 名加贈結緣品",
+      "options": [
+        {
+          "id": "base",
+          "label": "標準",
+          "surcharge": 0
+        }
+      ],
+      "stock": "尚有庫存（限量）",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1OtFSCxHyQ1VZ5IjDWgfdTqVDun84c7WD=w2000",
+      "blurb": "順心自在、隨求滿願的神聖曼陀羅。全鋁合金雷雕上色，表層 1mm 透明保護墊，防鏽防蝕、耐曬耐熱。",
+      "detail": [
+        "限量結緣，NT$1680。前 100 名加贈三大超級結緣品（依現貨二選一，名額以實際為準）。"
+      ]
+    },
+    {
+      "id": "caibao-card",
+      "name": "財寶天王字壇城卡片",
+      "type": "product",
+      "price": 360,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "A5/A6 大小卡各一張，一組含運",
+      "options": [
+        {
+          "id": "base",
+          "label": "原版（含運）",
+          "surcharge": 0
+        },
+        {
+          "id": "holofilm",
+          "label": "加貼大藏經光柵膜（=960元）",
+          "surcharge": 600
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/18qnC4J9Kdom4fwg_JM2Oc9CrTOdkDzbW=w2000",
+      "blurb": "全球獨一無二的財寶天王字曼陀羅開運招財朱印，當日修法祈請降臨加持，蓋上甘露王菩薩及聖曼陀羅朱印。",
+      "detail": [
+        "每組結緣價 360 元（含運費）。加貼大藏經光柵膜版，額外 +600 元 = 960 元。"
+      ]
+    },
+    {
+      "id": "gulugue-thangka",
+      "name": "秘制咕嚕咕咧佛母閃亮唐卡",
+      "type": "product",
+      "price": 360,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "每張（含運）",
+      "options": [
+        {
+          "id": "base",
+          "label": "原版（含運）",
+          "surcharge": 0
+        },
+        {
+          "id": "holofilm",
+          "label": "加貼大藏經光柵膜",
+          "surcharge": 500
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1SgxjF-lna_5vCJEiuL6HQJAXwJaFOjs5=w2000",
+      "blurb": "作明佛母（咕嚕咕咧佛母），懷愛法中最強大的兩大本尊之一。正面亮銀面閃卡材質，聖輪宗特別繪製。",
+      "detail": [
+        "結緣價每張 360 元（含運）。加貼大藏經光柵膜：額外 +500 元。"
+      ]
+    },
+    {
+      "id": "umbrella",
+      "name": "超強辟邪護身流蘇傘蓋",
+      "type": "product",
+      "price": 0,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "依佛塔座數選擇規格（不含瓔珞）",
+      "options": [
+        {
+          "id": "t36",
+          "label": "36 座大藏經光柵膜佛塔",
+          "surcharge": 16200
+        },
+        {
+          "id": "t49",
+          "label": "49 座大藏經光柵膜佛塔",
+          "surcharge": 19600
+        },
+        {
+          "id": "t72",
+          "label": "72 座大藏經光柵膜佛塔",
+          "surcharge": 25200
+        },
+        {
+          "id": "t108",
+          "label": "108 座大藏經光柵膜佛塔",
+          "surcharge": 32400
+        }
+      ],
+      "stock": "現貨依備品，不足時排隊趕製",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1oKmBcbZHXX2X4gC3EiKNh2S747p5ajCI=w2000",
+      "blurb": "「大藏經光柵膜佛塔 - 辟邪護身傘蓋套組」，考慮良久並親身實驗近一年後才決定的強效辟邪護身方便法門。",
+      "detail": [
+        "依佛塔座數分 36/49/72/108 座四種規格，不含瓔珞；公主帳、流蘇傘自行選購。"
+      ]
+    },
+    {
+      "id": "relic",
+      "name": "老料龍宮舍利",
+      "type": "product",
+      "price": 0,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "收藏二十年以上老礦，依編號選擇",
+      "options": [
+        {
+          "id": "no1",
+          "label": "No.1 歲月凝珠・珊瑚舍利墜",
+          "surcharge": 4000
+        },
+        {
+          "id": "no2",
+          "label": "No.2 沉靜之黑・黑金剛老礦墜（12.8g）",
+          "surcharge": 3600
+        },
+        {
+          "id": "no3",
+          "label": "No.3 綻放於石中的暖陽・珊瑚舍利（約13g）",
+          "surcharge": 3600
+        },
+        {
+          "id": "no4",
+          "label": "No.4 覺知的焦點・老礦核心舍利眼墜（約8g）",
+          "surcharge": 3800
+        },
+        {
+          "id": "no5",
+          "label": "No.5 瓷化・白金剛/骨舍利（約32g）",
+          "surcharge": 4500
+        },
+        {
+          "id": "no6",
+          "label": "No.6 多眼珊瑚舍利（約12.9g）",
+          "surcharge": 3800
+        },
+        {
+          "id": "no7",
+          "label": "No.7 絲絹水波紋・龍宮珍品（約15.7g）",
+          "surcharge": 4200
+        }
+      ],
+      "stock": "每件為斷代珍藏，售出即止",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/15ZSxT5N4HtgcR0yxQpyD1UtIPmyX9Tld=w2000",
+      "blurb": "收藏超過二十年、完全沒有配戴過的珍品龍宮舍利，僅收藏保養，為共修中心壇城改建而釋出。",
+      "detail": [
+        "各編號：No.1 4000／No.2 3600／No.3 3600／No.4 3800／No.5 4500／No.6 3800／No.7 4200。"
+      ]
+    },
+    {
+      "id": "xuanzhi-mandala",
+      "name": "宣紙手寫 財寶天王 字曼陀羅",
+      "type": "product",
+      "price": 12800,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "每幅（含大藏經光柵膜 x3）",
+      "options": [
+        {
+          "id": "base",
+          "label": "標準（含光柵膜 x3）",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/products/xuanzhi-mandala.jpg",
+      "blurb": "宣紙手寫財寶天王字曼陀羅，每幅含大藏經光柵膜 x3。",
+      "detail": [
+        "宣紙手寫財寶天王字曼陀羅，每幅 12800 元（含大藏經光柵膜 x3）。可護貝護膜供奉，百無禁忌。"
+      ]
+    },
+    {
+      "id": "wealth-note",
+      "name": "招財紙鈔（團印）",
+      "type": "product",
+      "price": 720,
+      "consult": false,
+      "group_order": true,
+      "multi_qty": false,
+      "price_note": "一份 600 張；成團後印刷寄送",
+      "options": [
+        {
+          "id": "base",
+          "label": "一份 600 張",
+          "surcharge": 0
+        }
+      ],
+      "stock": "數量足夠，成團才印刷寄送",
+      "on_sale": true,
+      "img": "images/products/wealth-note.jpg",
+      "blurb": "全新版招財紙鈔，修持財神法最佳輔助用品。一份 600 張 720 元，運費 150。",
+      "detail": [
+        "每期團印時間不定，數量足夠、成團才印刷寄送。結帳後提示「成團後通知付款」。"
+      ]
+    },
+    {
+      "id": "candle-light",
+      "name": "點燈祈福",
+      "type": "service",
+      "price": 200,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "每顆 200 元；代點後會拍照傳訊給你",
+      "options": [
+        {
+          "id": "base",
+          "label": "每顆 200 元",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000",
+      "blurb": "在香海所供奉的壇城、佛塔、轉經輪前為你專門點上祈願蠟燭、小油燈，將供燈功德迴向給你所想祈求的事項。",
+      "detail": [
+        "代點的蠟燭，會拍照傳訊給你。結緣價 200 元／顆。"
+      ]
+    },
+    {
+      "id": "incense-seal",
+      "name": "大悲拔苦香印代點服務",
+      "type": "service",
+      "price": 350,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": true,
+      "price_note": "一盤 350 元；每日同時僅 5 個名額（香爐 5 座）",
+      "options": [
+        {
+          "id": "base",
+          "label": "一盤 350 元",
+          "surcharge": 0
+        }
+      ],
+      "stock": "每日同時僅 5 個名額",
+      "on_sale": true,
+      "img": "images/services/incense-seal.jpg",
+      "blurb": "觀自在菩薩大悲智印周遍法界利益眾生薰真如法（又名觀自在妙香印法），一盤大悲拔苦熏香。",
+      "detail": [
+        "一盤結緣價 350 元，每日同時只開放 5 個名額（香爐暫時只有 5 座）。"
+      ]
+    },
+    {
+      "id": "personal-practice",
+      "name": "個人專法（包月）",
+      "type": "service",
+      "price": 2680,
+      "consult": false,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "每人每月 2680 元；不限名額",
+      "options": [
+        {
+          "id": "base",
+          "label": "包月",
+          "surcharge": 0
+        }
+      ],
+      "stock": "不限名額",
+      "on_sale": true,
+      "img": "images/services/personal-practice.jpg",
+      "blurb": "當月份報名者集體擺供、個人單獨祈福卡，每月不同主尊、殊勝日修不同法。",
+      "detail": [
+        "個人專法（包月）：結緣贊助 2680 元／人。當月份報名者集體擺供、每人單獨祈福卡、每月不同主尊與殊勝日法門。"
+      ]
+    },
+    {
+      "id": "akashic-record",
+      "name": "阿卡西記錄解讀",
+      "type": "service",
+      "price": null,
+      "consult": true,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "每 30 分鐘；洽詢價",
+      "options": [
+        {
+          "id": "base",
+          "label": "每 30 分鐘",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/services/akashic-record.jpg",
+      "blurb": "隸屬於阿賴耶識之下，透過阿賴耶識的連結，比一般阿卡西解讀更直擊人心。",
+      "detail": [
+        "每人次每 30 分鐘，洽詢價（私訊洽詢）。"
+      ]
+    },
+    {
+      "id": "light-course",
+      "name": "光的課程第一級",
+      "type": "service",
+      "price": null,
+      "consult": true,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "線上引導為主、讀書為輔，共十堂課；洽詢價",
+      "options": [
+        {
+          "id": "base",
+          "label": "共十堂課",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/services/light-course.jpg",
+      "blurb": "光的課程第一級，線上引導為主、讀書為輔，共十堂課。",
+      "detail": [
+        "共十堂課，洽詢價（私訊洽詢）。"
+      ]
+    },
+    {
+      "id": "shennian-chakra",
+      "name": "神念九脈輪線上共修",
+      "type": "service",
+      "price": null,
+      "consult": true,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "一梯次十堂，晚 9 點、每堂 1 小時；洽詢價",
+      "options": [
+        {
+          "id": "base",
+          "label": "一梯次十堂",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/services/shennian-chakra.jpg",
+      "blurb": "線上共修，一梯次十堂，每堂 1 小時。",
+      "detail": [
+        "一梯次十堂，晚上 9 點、每堂 1 小時，洽詢價（私訊洽詢）。"
+      ]
+    },
+    {
+      "id": "tarot-advanced",
+      "name": "塔羅牌占卜（進階）",
+      "type": "service",
+      "price": null,
+      "consult": true,
+      "group_order": false,
+      "multi_qty": false,
+      "price_note": "每 30 分鐘；限同一問題、不更換；洽詢價",
+      "options": [
+        {
+          "id": "base",
+          "label": "每 30 分鐘",
+          "surcharge": 0
+        }
+      ],
+      "stock": "現貨",
+      "on_sale": true,
+      "img": "images/services/tarot-advanced.jpg",
+      "blurb": "進階說明或個案處理。簡易占卜體驗優惠價請至蝦皮。",
+      "detail": [
+        "進階說明或個案處理，每 30 分鐘（限同一問題、不更換），洽詢價（私訊洽詢）。"
+      ]
+    }
+  ]
+}

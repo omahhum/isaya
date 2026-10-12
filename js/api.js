@@ -172,8 +172,35 @@
     });
   }
 
+  // 快照載入（顯示層）：{id}/ 靜態商品頁用 fromSnapshot() 取代 loadProducts()。
+  // sheet-cache.json＝試算表商品分頁快照，由「更新試算表快照.bat」一鍵匯出（GAS → JSON）。
+  // ⚠️ 快照只做顯示：cart.html / checkout.html 仍走 loadProducts()（GAS 真值）計價與核對，
+  //    快照落後時「顯示舊、收真值」，不開「顯示A收B」窗口。
+  function fromSnapshot(url) {
+    var settled = false;
+    return new Promise(function (resolve) {
+      function finish(ok, products) {
+        if (settled) return; settled = true;
+        window.ISAYA.PRODUCTS = (ok && products) ? products : [];
+        window.ISAYA.PRODUCTS_READY = !!ok;
+        if (window.ISAYA.PRODUCTS_READY) applyImages(window.ISAYA.PRODUCTS);
+        resolve({ ok: window.ISAYA.PRODUCTS_READY, source: "snapshot", products: window.ISAYA.PRODUCTS });
+      }
+      var timer = setTimeout(function () { finish(false, null); }, 5000); // 與 GAS 一致的 5 秒逾時
+      fetch(url)
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (data) {
+          clearTimeout(timer);
+          if (data && Array.isArray(data.products) && data.products.length) finish(true, data.products);
+          else finish(false, null);
+        })
+        .catch(function () { clearTimeout(timer); finish(false, null); });
+    });
+  }
+
   window.ISAYA_API = {
     url: APPS_SCRIPT_URL,
+    fromSnapshot: fromSnapshot,
     // 載入：只信任 GAS。成功 → 填 ISAYA.PRODUCTS（含圖片資產）、READY=true。
     // 失敗／逾時／空 → READY=false、PRODUCTS=[]，回 {ok:false}。無本機備胎。
     loadProducts: function () {
