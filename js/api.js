@@ -119,7 +119,17 @@
     'images/services/personal-practice_22.jpg': 'https://lh3.googleusercontent.com/d/1cyt6XZqcm3Rafv_RXH2K-4n0JA_6jCwo=w2000',
     'images/services/personal-practice_23.jpg': 'https://lh3.googleusercontent.com/d/1CMGK7pjEk7EVMhxDaWWNzYZStXF-8EFL=w2000',
     'images/services/personal-practice_24.png': 'https://lh3.googleusercontent.com/d/1MbmSwlF-5XUVgW3M7mxdpLdHUXtHdBjy=w2000',
-    'images/services/tarot.jpg': 'https://lh3.googleusercontent.com/d/1iFO2yzRsI9eVHPQOxZ7uZTupO8MP_f4C=w2000'
+    'images/services/tarot.jpg': 'https://lh3.googleusercontent.com/d/1iFO2yzRsI9eVHPQOxZ7uZTupO8MP_f4C=w2000',
+    'images/products/dabeizou-fuzhi.jpg': 'https://lh3.googleusercontent.com/d/1D-mfholBQkM7686dQmjhUL5eRLIjWPxU=w2000',
+    'images/products/dabeizou-laser-01.jpg': 'https://lh3.googleusercontent.com/d/19FUqlih8SRs3a8ch4zNT4RlRVE4IhP7N=w2000',
+    'images/products/dabeizou-laser-02.jpg': 'https://lh3.googleusercontent.com/d/1Qo5hla8_d5QOFUdKGVQT6VoCRbJPFfgU=w2000',
+    'images/products/dabeizou-laser-03.jpg': 'https://lh3.googleusercontent.com/d/1FpPc30qGMIqbK9e62VtapD5wy99XKVVM=w2000',
+    'images/products/dabeizou-laser-04.jpg': 'https://lh3.googleusercontent.com/d/1JyNMsDIspLIu1P3Gm6WVrpsmfCPkTtBA=w2000',
+    'images/products/dabeizou-laser-05.jpg': 'https://lh3.googleusercontent.com/d/10AmzY_6ZYUzIAV6PH0SxcWD9H4p3tTIQ=w2000',
+    'images/products/dabeizou-laser-06.jpg': 'https://lh3.googleusercontent.com/d/1H8vwns7OFyGnXNLsOrGBThknqQFmytEy=w2000',
+    'images/products/dabeizou-laser-07.jpg': 'https://lh3.googleusercontent.com/d/1gVKlR9Cy1tBaQucXiStP1ffQjcSSQuZz=w2000',
+    'images/products/dabeizou-laser-08.jpg': 'https://lh3.googleusercontent.com/d/14WobJvMVxOWfw7_ngae9t3Tv2o9A2LWL=w2000',
+    'images/products/dabeizou-laser-09.jpg': 'https://lh3.googleusercontent.com/d/1UxIHzzrSgKT4ed-vv9TCq3nrXAy-uprD=w2000'
   };
   function toDrive(src) {
     return (src && DRIVE_BY_LOCAL[src]) ? DRIVE_BY_LOCAL[src] : src;

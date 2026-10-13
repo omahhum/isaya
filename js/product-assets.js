@@ -160,5 +160,25 @@ window.ISAYA_IMAGES = {
       "https://lh3.googleusercontent.com/d/1pkIqldpioJCTJovNadv0tO_yxxodZQFp=w2000",
       "https://lh3.googleusercontent.com/d/1g6p-X4LRi7pyajWJ8cpRvzggtHyamoFh=w2000"
     ]
+  },
+  "dabeizou-fuzhi": {
+    "img": "https://lh3.googleusercontent.com/d/1D-mfholBQkM7686dQmjhUL5eRLIjWPxU=w2000",
+    "imgs": [
+      "https://lh3.googleusercontent.com/d/1D-mfholBQkM7686dQmjhUL5eRLIjWPxU=w2000"
+    ]
+  },
+  "dabeizou-laser": {
+    "img": "https://lh3.googleusercontent.com/d/19FUqlih8SRs3a8ch4zNT4RlRVE4IhP7N=w2000",
+    "imgs": [
+      "https://lh3.googleusercontent.com/d/19FUqlih8SRs3a8ch4zNT4RlRVE4IhP7N=w2000",
+      "https://lh3.googleusercontent.com/d/1Qo5hla8_d5QOFUdKGVQT6VoCRbJPFfgU=w2000",
+      "https://lh3.googleusercontent.com/d/1FpPc30qGMIqbK9e62VtapD5wy99XKVVM=w2000",
+      "https://lh3.googleusercontent.com/d/1JyNMsDIspLIu1P3Gm6WVrpsmfCPkTtBA=w2000",
+      "https://lh3.googleusercontent.com/d/10AmzY_6ZYUzIAV6PH0SxcWD9H4p3tTIQ=w2000",
+      "https://lh3.googleusercontent.com/d/1H8vwns7OFyGnXNLsOrGBThknqQFmytEy=w2000",
+      "https://lh3.googleusercontent.com/d/1gVKlR9Cy1tBaQucXiStP1ffQjcSSQuZz=w2000",
+      "https://lh3.googleusercontent.com/d/14WobJvMVxOWfw7_ngae9t3Tv2o9A2LWL=w2000",
+      "https://lh3.googleusercontent.com/d/1UxIHzzrSgKT4ed-vv9TCq3nrXAy-uprD=w2000"
+    ]
   }
 };
