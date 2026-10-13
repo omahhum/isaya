@@ -45,7 +45,7 @@
     'images/posts/p03.jpg': 'https://lh3.googleusercontent.com/d/10BSegBt5CMQ218aomv3pcOdbnHaVhP9I=w2000',
     'images/posts/p04.jpg': 'https://lh3.googleusercontent.com/d/1BmsJVZec8L2HPHeSIb-VK43ovV0iQorF=w2000',
     'images/products/caibao-card.jpg': 'https://lh3.googleusercontent.com/d/18qnC4J9Kdom4fwg_JM2Oc9CrTOdkDzbW=w2000',
-    'images/products/candel_light.jpg': 'https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000',
+    'images/products/candel_light.jpg': 'https://lh3.googleusercontent.com/d/18BL16axIUCWK204mu2fv_bu6_9Aaz_NR=w2000',
     'images/products/gulugue-thangka.jpg': 'https://lh3.googleusercontent.com/d/1SgxjF-lna_5vCJEiuL6HQJAXwJaFOjs5=w2000',
     'images/products/gulugue-thangka_01.png': 'https://lh3.googleusercontent.com/d/133bjdj_zw7MoBv-1lHGrVdDGp-vmFg-V=w2000',
     'images/products/gulugue-thangka_03.jpg': 'https://lh3.googleusercontent.com/d/1EXERmvtgyiUqte6ShOlKdyNsmw7l_RZt=w2000',
@@ -130,7 +130,7 @@
     'images/products/dabeizou-laser-07.jpg': 'https://lh3.googleusercontent.com/d/1gVKlR9Cy1tBaQucXiStP1ffQjcSSQuZz=w2000',
     'images/products/dabeizou-laser-08.jpg': 'https://lh3.googleusercontent.com/d/14WobJvMVxOWfw7_ngae9t3Tv2o9A2LWL=w2000',
     'images/products/dabeizou-laser-09.jpg': 'https://lh3.googleusercontent.com/d/1UxIHzzrSgKT4ed-vv9TCq3nrXAy-uprD=w2000',
-    'images/products/caishen-shuwen.jpg': 'https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000'
+    'images/products/caishen-shuwen.jpg': 'https://lh3.googleusercontent.com/d/18BL16axIUCWK204mu2fv_bu6_9Aaz_NR=w2000'
   };
   function toDrive(src) {
     return (src && DRIVE_BY_LOCAL[src]) ? DRIVE_BY_LOCAL[src] : src;

@@ -182,9 +182,9 @@ window.ISAYA_IMAGES = {
     ]
   },
   "caishen-shuwen": {
-    "img": "https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000",
+    "img": "https://lh3.googleusercontent.com/d/18BL16axIUCWK204mu2fv_bu6_9Aaz_NR=w2000",
     "imgs": [
-      "https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000"
+      "https://lh3.googleusercontent.com/d/18BL16axIUCWK204mu2fv_bu6_9Aaz_NR=w2000"
     ]
   }
 };
