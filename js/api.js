@@ -129,7 +129,8 @@
     'images/products/dabeizou-laser-06.jpg': 'https://lh3.googleusercontent.com/d/1H8vwns7OFyGnXNLsOrGBThknqQFmytEy=w2000',
     'images/products/dabeizou-laser-07.jpg': 'https://lh3.googleusercontent.com/d/1gVKlR9Cy1tBaQucXiStP1ffQjcSSQuZz=w2000',
     'images/products/dabeizou-laser-08.jpg': 'https://lh3.googleusercontent.com/d/14WobJvMVxOWfw7_ngae9t3Tv2o9A2LWL=w2000',
-    'images/products/dabeizou-laser-09.jpg': 'https://lh3.googleusercontent.com/d/1UxIHzzrSgKT4ed-vv9TCq3nrXAy-uprD=w2000'
+    'images/products/dabeizou-laser-09.jpg': 'https://lh3.googleusercontent.com/d/1UxIHzzrSgKT4ed-vv9TCq3nrXAy-uprD=w2000',
+    'images/products/caishen-shuwen.jpg': 'https://lh3.googleusercontent.com/d/1mpq5eh46moUtEXTZZkI6cVt63GlOsMsK=w2000'
   };
   function toDrive(src) {
     return (src && DRIVE_BY_LOCAL[src]) ? DRIVE_BY_LOCAL[src] : src;
