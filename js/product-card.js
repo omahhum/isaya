@@ -13,8 +13,12 @@
     return '<span class="product-price"><span class="cur">NT$</span>' + p.price + '</span>';
   }
 
+  // 2026-10-13 卡片簡化：只留 品名／價格／規格，全部文字＝詳細說明連結（p.id/ 靜態頁）；加購改購物車圖示
+  var CART_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>';
+
   function renderProductCard(p) {
     var hasOpts = p.options && p.options.length > 1;
+    var detailUrl = p.id + '/';
 
     // 圖片：img + 占位成對輸出，由 api.js bindPair 決定顯示哪個
     // （檔案缺失會自動回退舊圖 → 占位符，絕不破圖）
@@ -33,20 +37,17 @@
         '</select></div>';
     }
 
-    var note = p.price_note ? '<span class="product-note">' + p.price_note + '</span>' : '';
-    var stock = (typeof p.stock === 'string' && p.stock) ? '<div class="stock-line">' + p.stock + '</div>' : '';
+    var priceLink = '<a class="price-link" href="' + detailUrl + '">' + priceHTML(p) + '</a>';
+    var note = p.price_note ? '<a class="product-note" href="' + detailUrl + '">' + p.price_note + '</a>' : '';
 
     return '<div class="product-card" data-id="' + p.id + '">' +
       imgHTML +
       '<div class="product-body">' +
-        '<div class="product-name">' + p.name + '</div>' +
-        '<div class="product-blurb">' + p.blurb + '</div>' +
-        stock +
-        '<div class="product-price-row">' + priceHTML(p) + ' ' + note + '</div>' +
+        '<a class="product-name" href="' + detailUrl + '">' + p.name + '</a>' +
+        '<div class="product-price-row">' + priceLink + ' ' + note + '</div>' +
         optHTML +
         '<div class="cart-row">' +
-          '<a href="' + p.id + '/">詳細說明</a>' +
-          '<button class="btn-add" data-add="' + p.id + '">加入購物車</button>' +
+          '<button class="btn-cart" data-add="' + p.id + '" title="加入購物車" aria-label="加入購物車：' + p.name + '">' + CART_SVG + '</button>' +
         '</div>' +
       '</div>' +
     '</div>';
