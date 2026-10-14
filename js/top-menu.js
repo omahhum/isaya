@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: 'about.html',  label: '關於我' },
   { href: 'services.html', label: '祈福服務' },
   { href: 'products.html', label: '結緣品' },
+  { href: 'testimonials.html', label: '見證回饋' },
   { href: '__blog',      label: '部落格' },
   { href: '__contact',   label: '聯絡我' },
 ];
