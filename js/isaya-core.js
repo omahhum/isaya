@@ -18,7 +18,7 @@ window.ISAYA.PRODUCTS_READY = false;
 window.ISAYA.SHIPPING = {"freeThreshold":2000,"base":150};
 
 // 外部連結（footer / 各頁共用）
-window.ISAYA.LINKS = {"fb":"https://www.facebook.com/lightwishsoul/","fbPersonal":"https://www.facebook.com/eshya.light","shopee":"https://shopee.tw/jewelry69","shopee2":"https://shopee.tw/shop/353675203/","blog":"https://lightwishsoul.blogspot.com/","podcast":"https://open.firstory.me/user/lightwishsoul/platforms","light":"https://light.spiritstar.org/"};
+window.ISAYA.LINKS = {"fb":"https://www.facebook.com/lightwishsoul/","fbPersonal":"https://www.facebook.com/eshya.light","shopee":"https://shopee.tw/jewelry69","shopee2":"https://shopee.tw/shop/353675203/","blog":"https://lightwishsoul.blogspot.com/","podcast":"https://open.firstory.me/user/lightwishsoul/platforms","light":"https://light.spiritstar.org/","contact":"https://www.facebook.com/lightwishsoul/"};
 
 // ── 查詢輔助（對 GAS 填入的 PRODUCTS 運算；無資料時自然回空／null）──
 window.ISAYA.getProduct = function (id) {

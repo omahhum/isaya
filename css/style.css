@@ -817,6 +817,30 @@ img { max-width: 100%; display: block; }
   color: var(--color-gold-text); font-size: .9rem; letter-spacing: .1em;
   margin-top: .4rem; text-decoration-color: var(--color-gold-line);
 }
+/* ⑦ 無圖卡：品牌色漸層槽＋文字，不強塞 placeholder 照片 */
+.post-card__badge {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1rem; color: var(--color-gold-text); letter-spacing: .14em;
+  opacity: .85;
+}
+/* ⑦ 載入中骨架卡（靜態、不閃爍） */
+.post-card--skeleton { pointer-events: none; }
+.post-card--skeleton .post-card__no { font-family: var(--font-sans); font-style: normal; color: var(--color-muted); }
+/* ⑦ 格網尾：換一批按鈕＋到部落格全連 */
+.section__foot {
+  margin-top: 1.8rem;
+  display: flex; align-items: center; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+}
+.section__foot .btn { min-width: 6rem; }
+.section__foot .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.link-arrow {
+  color: var(--color-gold-text); font-size: .95rem; letter-spacing: .05em;
+  text-decoration: none; border-bottom: 1px solid var(--color-gold-faint);
+  padding-bottom: .1rem; transition: border-color .4s ease;
+}
+.link-arrow:hover { border-color: var(--color-gold-line); }
+/* ⑦ fail-closed 卡：JSONP 抓不到時的「到部落格讀」fallback，虛線邊框＋正常卡片 */
+.post-card--degrade { border: 1px dashed var(--color-gold-line); }
 
 /* --- ⑧ 角色介紹（Character Profile：左文右圖、雜誌編排） --- */
 .character-grid {
@@ -881,6 +905,9 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: center;
 }
 .character-profile__art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 角色設定圖（多視角 sheet）：整張收進不裁切，淺底托圖 */
+.character-profile__art--sheet { aspect-ratio: auto; padding: 1.2rem; }
+.character-profile__art--sheet img { object-fit: contain; height: auto; }
 .character-profile__art .img-placeholder {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -901,117 +928,38 @@ img { max-width: 100%; display: block; }
 .character-grid__text { color: var(--color-text-2); font-size: 1rem; line-height: 1.9; margin-bottom: 1rem; }
 
 /* --- ⑨ Gallery（5 張橫排、一致比例、細金框＋柔圓角＋hover 微放大） --- */
-.gallery-row {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0,1fr));
-  gap: 1.2rem;
-}
-.gallery-item { margin: 0; display: flex; flex-direction: column; gap: .9rem; }
-.gallery-item__media {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid var(--color-gold-line);
-  border-radius: 12px;
-  box-shadow: var(--shadow-soft);
-  background:
-    radial-gradient(120% 90% at 50% 0%, rgba(251,248,242,.8), rgba(227,217,229,.4) 55%, transparent 82%),
-    linear-gradient(180deg, rgba(251,248,242,.9), rgba(234,229,218,.5));
-  display: flex; align-items: center; justify-content: center;
-}
-.gallery-item__media img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform .7s cubic-bezier(.22,.61,.36,1);
-}
-.gallery-item:hover .gallery-item__media img { transform: scale(1.06); }
-.gallery-item__media .img-placeholder {
-  color: var(--color-text-2); font-size: .86rem; letter-spacing: .14em;
-}
-.gallery-item__cap {
-  font-family: var(--font-serif); font-size: 1.05rem; font-weight: 500;
-  letter-spacing: .08em; color: var(--color-heading);
-  display: flex; align-items: baseline; gap: .5rem;
-}
-.gallery-item__no {
-  font-family: var(--font-serif); font-style: italic;
-  font-size: .9rem; color: var(--color-gold-text);
-}
-
-/* --- ⑩ 生活風格（4 張圓形圖：細金環＋標題＋一行描述） --- */
-.lifestyle-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 2rem;
-}
-.lifestyle-item {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center;
-}
-.lifestyle-item__ring {
-  width: 190px; height: 190px;
-  border-radius: 50%;
-  border: 1px solid var(--color-gold-line);
-  box-shadow: var(--shadow-lav), inset 0 0 0 5px rgba(251,248,242,.75);
-  padding: 7px;
-  margin-bottom: 1.4rem;
-  background: var(--surface-card-2);
-}
-.lifestyle-item__media {
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  background:
-    radial-gradient(120% 100% at 50% 10%, rgba(251,248,242,.8), rgba(227,217,229,.45) 55%, transparent 82%);
-}
-.lifestyle-item__media img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform .7s cubic-bezier(.22,.61,.36,1);
-}
-.lifestyle-item:hover .lifestyle-item__media img { transform: scale(1.05); }
-.lifestyle-item__media .img-placeholder {
-  color: var(--color-text-2); font-size: .86rem; letter-spacing: .14em;
-}
-.lifestyle-item__title {
-  font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500;
-  color: var(--color-heading); letter-spacing: .06em; margin-bottom: .5rem;
-}
-.lifestyle-item__text {
-  color: var(--color-text-2); font-size: 1rem; line-height: 1.8;
-  max-width: 240px;
-}
-
-/* --- ⑪ 粉絲留言（Instagram / Lifestyle 感：圓 avatar＋留言＋小愛心） --- */
+/* --- ⑪ 粉絲留言（文字優先：引文＋品項 tag＋匿名同修；無 avatar 純文字卡） --- */
 .testimonial-card {
   padding: 2.4rem 2rem; text-align: center;
   display: flex; flex-direction: column; align-items: center;
 }
-.testimonial-card__avatar {
-  width: 76px; height: 76px; border-radius: 50%;
-  overflow: hidden; flex-shrink: 0;
-  border: 1px solid var(--color-gold-line);
-  box-shadow: 0 0 0 4px rgba(251,248,242,.85), var(--shadow-soft);
-  margin-bottom: 1.3rem;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface-card-2);
-}
-.testimonial-card__avatar img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-}
 .testimonial-card__text {
   font-family: var(--font-serif); font-style: italic;
   font-size: 1.05rem; line-height: 1.9; color: var(--color-text);
-  max-width: 270px;
 }
 .testimonial-card__foot {
   margin-top: 1.4rem;
-  display: flex; align-items: center; gap: .5rem;
+  display: flex; flex-direction: column; align-items: center; gap: .45rem;
+}
+.testimonial-card__tag {
+  display: inline-block;
+  border: 1px solid var(--color-gold-line);
+  background: var(--color-gold-faint);
+  color: var(--color-gold-text);
+  font-size: .8rem; letter-spacing: .08em;
+  padding: .18rem .6rem; border-radius: var(--radius-line);
 }
 .testimonial-card__name {
   color: var(--color-text-2); font-size: .86rem; letter-spacing: .06em;
 }
-.testimonial-card__heart {
-  width: 18px; height: 18px; color: var(--color-gold-deep);
-  filter: drop-shadow(0 0 3px rgba(156,121,61,.25));
+.testimonial-card__date { color: var(--color-muted); }
+.testimonial-disclaimer {
+  margin-top: 1.6rem; text-align: center;
+  color: var(--color-muted); font-size: .85rem; letter-spacing: .04em;
+}
+.testimonial-empty {
+  grid-column: 1 / -1; text-align: center;
+  color: var(--color-text-2); font-size: 1rem;
 }
 
 /* --- 圖片 placeholder（待補素材） --- */
@@ -1098,7 +1046,7 @@ img { max-width: 100%; display: block; }
 /* --- ⑬ 服務項目（圓 icon＋名稱＋說明＋了解更多，Desktop 5 欄） --- */
 .service-row {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0,1fr));
+  grid-template-columns: repeat(4, minmax(0,1fr));
   gap: 1.6rem;
 }
 .service-item {
@@ -1194,6 +1142,9 @@ img { max-width: 100%; display: block; }
 .product-price.free { color: var(--color-sage-text); }
 .product-note { color: var(--color-text-2); font-size: .82rem; }
 .stock-line { font-size: .84rem; color: var(--color-text-2); margin-bottom: .4rem; }
+.featured-more {
+  text-align: center; margin-top: 1.6rem;
+}
 .tag-consult {
   display: inline-block; background: var(--color-gold-faint);
   border: 1px solid var(--color-gold-line); color: var(--color-text-2);
@@ -1634,8 +1585,7 @@ body { overflow-x: hidden; }
   .character-grid--profile { grid-template-columns: 1fr; gap: 2.5rem; }
   .character-profile__art { max-width: 420px; margin: 0 auto; }
   .about-grid__photo, .character-grid__art { max-width: 420px; margin: 0 auto; }
-  .gallery-row { grid-template-columns: repeat(3, minmax(0,1fr)); }   /* 5 → 3＋2 */
-  .lifestyle-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  
   .brand-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }   /* 3 → 2＋1 */
   .post-grid, .post-grid--4 { grid-template-columns: repeat(2, minmax(0,1fr)); }  /* 4 → 2＋2 */
   .service-row { grid-template-columns: repeat(3, minmax(0,1fr)); }  /* 5 → 3＋2 */
@@ -1679,9 +1629,9 @@ body { overflow-x: hidden; }
   /* 卡片重排：3→1、Top Posts 4→1、Gallery 5→2、Services 5→2 */
   .section { padding: 3rem 1.2rem; }
   .post-grid, .post-grid--4 { grid-template-columns: 1fr; }
-  .gallery-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  
   .service-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .lifestyle-row { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  
   .brand-grid { grid-template-columns: 1fr; }
   .character-profile__art, .about-grid__photo, .character-grid__art { max-width: 340px; }
 
@@ -1698,9 +1648,6 @@ body { overflow-x: hidden; }
   .brand-banner__moon { width: 64px; height: 64px; top: 24px; right: 8%; }
   .brand-banner__stars .star--6,
   .brand-banner__stars .star--8 { display: none; }
-
-  /* testimonial avatar 略縮、避免超寬 */
-  .testimonial-card__avatar { width: 64px; height: 64px; }
 }
 
 /* ---------- 430：手機微調 ---------- */
@@ -1714,7 +1661,7 @@ body { overflow-x: hidden; }
   .service-item__icon svg { width: 28px; height: 28px; }
   .service-item { padding: 1.5rem .9rem; }
   .footer__social-link { padding: .4rem .8rem; }
-  .gallery-row, .service-row, .lifestyle-row { gap: .9rem; }
+  .service-row { gap: .9rem; }
   .hero__actions { gap: .8rem; }
 }
 
@@ -1723,8 +1670,55 @@ body { overflow-x: hidden; }
   .hero__title { font-size: 32px; }
   .section__title { font-size: 28px; }
   .nav-logo__cn { font-size: .98rem; letter-spacing: .08em; }
-  .post-grid, .post-grid--4, .gallery-row, .service-row, .lifestyle-row { gap: .8rem; }
+  .post-grid, .post-grid--4, .service-row { gap: .8rem; }
   .hero-character { width: min(260px, 92%); }
   .brand-banner__title { font-size: 1.8rem; }
   .brand-banner__moon { width: 52px; height: 52px; }
+}
+
+/* ---------- 見證原圖牆（testimonials.html）：masonry＋lightbox ---------- */
+.testimonial-photo-grid {
+  columns: 3; column-gap: 1.4rem;
+  max-width: var(--container); margin: 0 auto;
+}
+.testimonial-photo {
+  break-inside: avoid; margin: 0 0 1.4rem;
+  background: var(--surface-card); border: 1px solid var(--color-gold-line);
+  border-radius: var(--radius-card); overflow: hidden;
+  cursor: zoom-in; box-shadow: var(--shadow-soft);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.testimonial-photo:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); }
+.testimonial-photo img {
+  width: 100%; height: auto; display: block;
+  background: #fff; /* LINE 截圖白底，避免透明 PNG 顯灰 */
+}
+.testimonial-photo figcaption {
+  padding: .7rem 1rem; color: var(--color-text-2);
+  font-size: .82rem; line-height: 1.6;
+}
+
+/* lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(24,18,38,.92); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.lightbox[hidden] { display: none; }
+.lightbox__inner { max-width: min(92vw, 1000px); max-height: 92vh; overflow: auto; }
+.lightbox__img {
+  width: auto; max-width: 100%; max-height: 80vh; display: block; margin: 0 auto;
+  border: 1px solid var(--color-gold-line); border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0,0,0,.5);
+}
+.lightbox__cap {
+  margin: .9rem 0 0; color: rgba(245,241,232,.9);
+  font-size: .9rem; line-height: 1.7; text-align: center;
+}
+
+@media (max-width: 900px) { .testimonial-photo-grid { columns: 2; } }
+@media (max-width: 480px) {
+  .testimonial-photo-grid { columns: 1; }
+  .lightbox { padding: 1rem; }
 }

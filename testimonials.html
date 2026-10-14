@@ -19,6 +19,26 @@
     <p>用了之後生活的小變化，同修現身說法。完整影像回饋請至粉絲專頁相簿。</p>
   </section>
 
+  <section class="section" id="text-testimonials">
+    <div class="section__head">
+      <p class="section__eyebrow">Your Words</p>
+      <h2 class="section__title">同修心得</h2>
+      <p class="section__sub">20 則文字見證全列，逐則可追溯來源檔（署名皆匿名同修）</p>
+    </div>
+    <div class="testimonial-grid" id="textGrid"></div>
+    <p class="testimonial-disclaimer">以上為個人使用經驗分享，不代表療效或必然結果。</p>
+  </section>
+
+  <section class="section section--tinted" id="photo-wall">
+    <div class="section__head">
+      <p class="section__eyebrow">Proof</p>
+      <h2 class="section__title">回饋原圖</h2>
+      <p class="section__sub">23 張真實回饋截圖，點圖可放大原圖；人物資訊已由師姊馬賽克</p>
+    </div>
+    <div class="testimonial-photo-grid" id="photoGrid"></div>
+    <p class="testimonial-disclaimer">以上為個人使用經驗分享，不代表療效或必然結果。</p>
+  </section>
+
   <section class="section">
     <div class="grid-3">
       <div class="card">
@@ -59,5 +79,63 @@
 <script src="js/top-menu.js"></script>
 <script src="js/auth-nav.js"></script>
 <script src="js/footer.js"></script>
+
+<script src="js/testimonials.js"></script>
+<script src="js/testimonial-photos.js"></script>
+<script>
+(function () {
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // ① 文字全列（同池 js/testimonials.js，不抽樣、全排）
+  var tg = document.getElementById('textGrid');
+  var items = (window.ISAYA_TESTIMONIALS || []).filter(function (t) { return t && t.quote; });
+  if (tg) {
+    tg.innerHTML = items.map(function (p) {
+      var date = p.date ? '<span class="testimonial-card__date">' + esc(p.date) + '</span> ' : '';
+      return '<blockquote class="testimonial-card">' +
+        '<p class="testimonial-card__text">「' + esc(p.quote) + '」</p>' +
+        '<footer class="testimonial-card__foot">' +
+          '<span class="testimonial-card__tag">' + esc(p.tag || '') + '</span>' +
+          '<span class="testimonial-card__name">' + date + '匿名同修</span>' +
+        '</footer>' +
+      '</blockquote>';
+    }).join('');
+  }
+
+  // ② 回饋原圖牆（CSS columns masonry＋點擊放大）
+  var pg = document.getElementById('photoGrid');
+  var photos = window.ISAYA_TESTIMONIAL_PHOTOS || [];
+  if (pg && photos.length) {
+    pg.innerHTML = photos.map(function (p, i) {
+      return '<figure class="testimonial-photo" data-full="' + esc(p.file) + '" data-cap="' + esc(p.caption) + '">' +
+        '<img src="' + esc(p.file) + '" alt="' + esc(p.caption) + '" width="' + p.w + '" height="' + p.h + '" loading="lazy">' +
+        '<figcaption>' + esc(p.caption) + '</figcaption>' +
+      '</figure>';
+    }).join('');
+  }
+
+  // lightbox：fixed overlay、點圖換全尺寸、Esc/點外層關閉
+  var lb = document.createElement('div');
+  lb.className = 'lightbox'; lb.hidden = true;
+  lb.innerHTML = '<div class="lightbox__inner"><img class="lightbox__img" alt=""><p class="lightbox__cap"></p></div>';
+  document.body.appendChild(lb);
+  var lbImg = lb.querySelector('.lightbox__img');
+  var lbCap = lb.querySelector('.lightbox__cap');
+  function closeLb() { lb.hidden = true; lbImg.removeAttribute('src'); }
+  pg && pg.addEventListener('click', function (e) {
+    var f = e.target.closest('.testimonial-photo');
+    if (!f) return;
+    lbImg.src = f.dataset.full;
+    lbCap.textContent = f.dataset.cap || '';
+    lb.hidden = false;
+  });
+  lb.addEventListener('click', function (e) { if (e.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+})();
+</script>
 </body>
 </html>
